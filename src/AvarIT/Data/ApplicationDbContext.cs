@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using AvarIT.Models;
+using AvarIT.Models.InventoryViewModels;
 
 namespace AvarIT.Data
 {
@@ -22,5 +23,11 @@ namespace AvarIT.Data
             // For example, you can rename the ASP.NET Identity table names and more.
             // Add your customizations after calling base.OnModelCreating(builder);
         }
+        public DbSet<ComputerCase> ComputerCasegs { get; set; }
+        public DbSet<Printer> Printers { get; set; }
+        public DbSet<Monitor> Monitors { get; set; }
+        public DbSet<NetWork> NetWorks { get; set; }
+        public DbSet<Miscellaneous> MiscellaneousItems { get; set; }
+        public DbSet<WebCompatibilityIssues> Issues { get; set; }
     }
 }
