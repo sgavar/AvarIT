@@ -84,7 +84,7 @@ namespace AvarIT.Models.InventoryViewModels
         [DataType(DataType.MultilineText)]
         public string Note { get; set; }
 
-        public bool? Retired { get; set; }
+        public string Retired { get; set; }
 
     }
 }

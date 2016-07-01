@@ -8,7 +8,7 @@ using AvarIT.Data;
 namespace AvarIT.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20160701151747_MyFirstMigration")]
+    [Migration("20160701154406_MyFirstMigration")]
     partial class MyFirstMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -108,7 +108,7 @@ namespace AvarIT.Data.Migrations
 
                     b.Property<DateTime?>("PurchaseDate");
 
-                    b.Property<bool?>("Retired");
+                    b.Property<string>("Retired");
 
                     b.Property<string>("SerialNumber");
 

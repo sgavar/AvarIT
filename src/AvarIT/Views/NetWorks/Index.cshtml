@@ -1,0 +1,197 @@
+@model IEnumerable<AvarIT.Models.InventoryViewModels.NetWork>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.AccessPoint)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AssignedUser)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AvarTagNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Brand)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cabel)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cost)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DeviceType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Firewall)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LANMAC)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LANPorts)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LANSpeed)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Managed)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MemorySize)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ModelNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ModelSeries)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Modem)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NameOrSSID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Note)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OfficeLocation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OrderNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PurchaseDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Retired)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Router)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SerialNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Switch)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.WLANMAC)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Warranty)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.WirelessType)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.AccessPoint)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AssignedUser)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AvarTagNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Brand)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cabel)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cost)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DeviceType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Firewall)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LANMAC)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LANPorts)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LANSpeed)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Managed)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MemorySize)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ModelNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ModelSeries)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Modem)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NameOrSSID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Note)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OfficeLocation)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrderNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PurchaseDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Retired)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Router)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SerialNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Switch)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.WLANMAC)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Warranty)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.WirelessType)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

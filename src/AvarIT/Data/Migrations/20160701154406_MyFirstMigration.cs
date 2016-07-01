@@ -34,7 +34,7 @@ namespace AvarIT.Data.Migrations
                     OfficeLocation = table.Column<string>(nullable: true),
                     OrderNo = table.Column<string>(nullable: true),
                     PurchaseDate = table.Column<DateTime>(nullable: true),
-                    Retired = table.Column<bool>(nullable: true),
+                    Retired = table.Column<string>(nullable: true),
                     SerialNumber = table.Column<string>(nullable: true),
                     UpgradeLicense = table.Column<string>(nullable: true),
                     UpgradedTo = table.Column<string>(nullable: true),

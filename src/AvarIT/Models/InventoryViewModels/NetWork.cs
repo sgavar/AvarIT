@@ -72,19 +72,19 @@ namespace AvarIT.Models.InventoryViewModels
         [DataType(DataType.MultilineText)]
         public string Note { get; set; }
 
-        public bool? Managed { get; set; }
-        public bool? Router { get; set; }
-        public bool? Switch { get; set; }
+        public string Managed { get; set; }
+        public string Router { get; set; }
+        public string Switch { get; set; }
 
         [Display(Name = "Access Point")]
-        public bool? AccessPoint { get; set; }
+        public string AccessPoint { get; set; }
 
-        public bool? Firewall { get; set; }
+        public string Firewall { get; set; }
 
-        public bool? Modem { get; set; }
+        public string Modem { get; set; }
 
-        public bool? Cabel { get; set; }
+        public string Cabel { get; set; }
 
-        public bool? Retired { get; set; }
+        public string Retired { get; set; }
     }
 }

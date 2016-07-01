@@ -1,0 +1,186 @@
+@model AvarIT.Models.InventoryViewModels.NetWork
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>NetWork</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.AccessPoint)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AccessPoint)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.AssignedUser)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AssignedUser)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.AvarTagNumber)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AvarTagNumber)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Brand)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Brand)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Cabel)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Cabel)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Cost)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Cost)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DeviceType)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DeviceType)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Firewall)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Firewall)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.LANMAC)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.LANMAC)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.LANPorts)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.LANPorts)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.LANSpeed)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.LANSpeed)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Managed)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Managed)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.MemorySize)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.MemorySize)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ModelNo)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ModelNo)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ModelSeries)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ModelSeries)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Modem)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Modem)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.NameOrSSID)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NameOrSSID)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Note)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Note)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.OfficeLocation)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.OfficeLocation)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.OrderNo)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.OrderNo)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.PurchaseDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PurchaseDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Retired)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Retired)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Router)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Router)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.SerialNumber)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SerialNumber)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Switch)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Switch)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.WLANMAC)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.WLANMAC)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Warranty)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Warranty)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.WirelessType)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.WirelessType)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.ID">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

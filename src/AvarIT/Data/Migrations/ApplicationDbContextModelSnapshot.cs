@@ -107,7 +107,7 @@ namespace AvarIT.Data.Migrations
 
                     b.Property<DateTime?>("PurchaseDate");
 
-                    b.Property<bool?>("Retired");
+                    b.Property<string>("Retired");
 
                     b.Property<string>("SerialNumber");
 
