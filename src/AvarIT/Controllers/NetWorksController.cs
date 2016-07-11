@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using AvarIT.Data;
-using AvarIT.Models.InventoryViewModels;
+using AvarIT.Models.InventoryModels;
 
 namespace AvarIT.Controllers
 {

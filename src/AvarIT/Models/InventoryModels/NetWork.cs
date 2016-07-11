@@ -5,7 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 
-namespace AvarIT.Models.InventoryViewModels
+namespace AvarIT.Models.InventoryModels
 {
     public class NetWork
     {

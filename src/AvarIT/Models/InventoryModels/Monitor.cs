@@ -5,23 +5,17 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 
-namespace AvarIT.Models.InventoryViewModels
+namespace AvarIT.Models.InventoryModels
 {
-    public class Miscellaneous
+    public class Monitor
     {
         public int ID { get; set; }
 
         [Display(Name = "Avar Tag Number")]
         public string AvarTagNumber { get; set; }
 
-        [Display(Name = "Item Type")]
-        public string ItemType { get; set; }
-
         [Display(Name = "Assigned User")]
         public string AssignedUser { get; set; }
-
-        [Display(Name = "Machine Name")]
-        public string MachineName { get; set; }
 
         [Display(Name = "Office Location")]
         public string OfficeLocation { get; set; }
@@ -38,13 +32,16 @@ namespace AvarIT.Models.InventoryViewModels
         [Display(Name = "Model No")]
         public string ModelNo { get; set; }
 
-        public string License { get; set; }
+        [Display(Name = "Screen Type")]
+        public string ScreenType { get; set; }
 
-        [Display(Name = "LAN MAC")]
-        public string LANMAC { get; set; }
+        [Display(Name = "Screen size")]
+        public string ScreenSize { get; set; }
 
-        [Display(Name = "WLAN MAC")]
-        public string WLANMAC { get; set; }
+     
+        public string HDMI { get; set; }
+        public string VGA { get; set; }
+        public string DVI { get; set; }
 
         [Display(Name = "Order No")]
         public string OrderNo { get; set; }
@@ -63,6 +60,7 @@ namespace AvarIT.Models.InventoryViewModels
         public string Note { get; set; }
 
         public string Retired { get; set; }
+
 
     }
 }

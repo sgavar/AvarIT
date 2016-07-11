@@ -5,14 +5,17 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 
-namespace AvarIT.Models.InventoryViewModels
+namespace AvarIT.Models.InventoryModels
 {
-    public class Printer
+    public class Miscellaneous
     {
         public int ID { get; set; }
 
         [Display(Name = "Avar Tag Number")]
         public string AvarTagNumber { get; set; }
+
+        [Display(Name = "Item Type")]
+        public string ItemType { get; set; }
 
         [Display(Name = "Assigned User")]
         public string AssignedUser { get; set; }
@@ -35,8 +38,7 @@ namespace AvarIT.Models.InventoryViewModels
         [Display(Name = "Model No")]
         public string ModelNo { get; set; }
 
-        [Display(Name = "Printer Type")]
-        public string PrinterType { get; set; }
+        public string License { get; set; }
 
         [Display(Name = "LAN MAC")]
         public string LANMAC { get; set; }
@@ -57,18 +59,10 @@ namespace AvarIT.Models.InventoryViewModels
         [DataType(DataType.Currency)]
         public decimal Cost { get; set; }
 
-        [DataType(DataType.MultilineText)]
+
         public string Note { get; set; }
 
-        [Display(Name = "Copy/Scan")]
-        public string CopyScan{ get; set; }
-
-        public string Fax { get; set; }
-        public string Dublix { get; set; }
-        public string Color { get; set; }
-        public string Wireless { get; set; }
-        public string LAN{ get; set; }
-        public string USB { get; set; }
         public string Retired { get; set; }
+
     }
 }

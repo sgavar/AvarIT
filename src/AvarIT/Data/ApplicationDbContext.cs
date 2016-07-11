@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using AvarIT.Models;
-using AvarIT.Models.InventoryViewModels;
+using AvarIT.Models.InventoryModels;
 
 namespace AvarIT.Data
 {
@@ -29,5 +29,7 @@ namespace AvarIT.Data
         public DbSet<NetWork> NetWorks { get; set; }
         public DbSet<Miscellaneous> MiscellaneousItems { get; set; }
         public DbSet<WebCompatibilityIssues> Issues { get; set; }
+        public DbSet<Employee> Employees { get; set; }
+        public DbSet<OperationSystem> OperationSystems { get; set; }
     }
 }

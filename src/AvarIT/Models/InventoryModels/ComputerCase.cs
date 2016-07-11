@@ -4,18 +4,23 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations.Schema;
 
-namespace AvarIT.Models.InventoryViewModels
+namespace AvarIT.Models.InventoryModels
 {
     public class ComputerCase
     {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }
+
+        [Display(Name = "Assigned User")]
+        public virtual ICollection<Employee> Employees { get; set; }
 
         [Display(Name = "Avar Tag Number")]
         public string AvarTagNumber { get; set; }
 
-        [Display(Name = "Assigned User")]
-        public string AssignedUser { get; set; }
+     
 
         [Display(Name = "Machine Name")]
         public string MachineName { get; set; }
@@ -51,13 +56,13 @@ namespace AvarIT.Models.InventoryViewModels
         public string HDDSize { get; set; }
 
         [Display(Name = "OEM Operating System")]
-        public string OEMOperatingSystem { get; set; }
+        public virtual ICollection<OperationSystem> OEMOperatingSystem { get; set; }
 
         [Display(Name = "OEM License")]
         public string OEMLicense { get; set; }
 
         [Display(Name = "Upgraded To")]
-        public string UpgradedTo { get; set; }
+        public virtual ICollection<OperationSystem> UpgradedTo { get; set; }
 
         [Display(Name = "Upgrade License")]
         public string UpgradeLicense { get; set; }
@@ -84,7 +89,7 @@ namespace AvarIT.Models.InventoryViewModels
         [DataType(DataType.MultilineText)]
         public string Note { get; set; }
 
-        public string Retired { get; set; }
+        public bool? Retired { get; set; }
 
     }
 }
