@@ -1,0 +1,183 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
+using AvarIT.Data;
+using AvarIT.Models.InventoryModels;
+using AvarIT.Models.InventoryViewModels;
+
+namespace AvarIT.Controllers
+{
+    public class ComputerCasesController : Controller
+    {
+        private readonly ApplicationDbContext _context;
+
+        public ComputerCasesController(ApplicationDbContext context)
+        {
+            _context = context;    
+        }
+
+        // GET: ComputerCases
+            public async Task<IActionResult> Index(int? userId)
+        {
+            IQueryable<int> genreQuery = from m in _context.ComputerCases
+                                         orderby m.EmployeeId
+                                         select m.EmployeeId;
+
+            var computerCases = from m in _context.ComputerCases
+                                select m;
+
+           
+            if (userId != null)
+            {
+              
+                computerCases = computerCases.Where(x => x.EmployeeId == userId);
+                if (computerCases == null)
+                {
+                    return NotFound();
+                }
+            }
+
+            var employeeComputerCaseVM = new EmployeeComputerCaseViewModel();
+
+            employeeComputerCaseVM.users= new SelectList(_context.Employees, "EmployeeID", "EmployeeName");
+
+            
+            
+            employeeComputerCaseVM.computerCases = await computerCases.ToListAsync();
+            return View(employeeComputerCaseVM);
+
+        }
+    
+
+        // GET: ComputerCases/Details/5
+        public async Task<IActionResult> Details(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var computerCase = await _context.ComputerCases.SingleOrDefaultAsync(m => m.ID == id);
+            if (computerCase == null)
+            {
+                return NotFound();
+            }
+
+            return View(computerCase);
+        }
+
+        // GET: ComputerCases/Create
+        public IActionResult Create()
+        {
+            ViewData["EmployeeId"] = new SelectList(_context.Employees, "EmployeeID", "EmployeeName");
+            return View();
+        }
+
+        // POST: ComputerCases/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create([Bind("ID,AvarTagNumber,Brand,CPUFrequency,CPUType,Cost,EmployeeId,HDDSize,LANMAC,LaptopScreenSize,MachineName,MemorySize,ModelNo,ModelSeries,Note,OEMLicense,OfficeLocation,OrderNo,PurchaseDate,Retired,SerialNumber,UpgradeLicense,WLANMAC,Warranty")] ComputerCase computerCase)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Add(computerCase);
+                await _context.SaveChangesAsync();
+                return RedirectToAction("Index");
+            }
+            ViewData["EmployeeId"] = new SelectList(_context.Employees, "EmployeeID", "Employee", computerCase.EmployeeId);
+            return View(computerCase);
+        }
+
+        // GET: ComputerCases/Edit/5
+        public async Task<IActionResult> Edit(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var computerCase = await _context.ComputerCases.SingleOrDefaultAsync(m => m.ID == id);
+            if (computerCase == null)
+            {
+                return NotFound();
+            }
+            ViewData["EmployeeId"] = new SelectList(_context.Employees, "EmployeeID", "Employee", computerCase.EmployeeId);
+            return View(computerCase);
+        }
+
+        // POST: ComputerCases/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(int id, [Bind("ID,AvarTagNumber,Brand,CPUFrequency,CPUType,Cost,EmployeeId,HDDSize,LANMAC,LaptopScreenSize,MachineName,MemorySize,ModelNo,ModelSeries,Note,OEMLicense,OfficeLocation,OrderNo,PurchaseDate,Retired,SerialNumber,UpgradeLicense,WLANMAC,Warranty")] ComputerCase computerCase)
+        {
+            if (id != computerCase.ID)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _context.Update(computerCase);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!ComputerCaseExists(computerCase.ID))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                return RedirectToAction("Index");
+            }
+            ViewData["EmployeeId"] = new SelectList(_context.Employees, "EmployeeID", "Employee", computerCase.EmployeeId);
+            return View(computerCase);
+        }
+
+        // GET: ComputerCases/Delete/5
+        public async Task<IActionResult> Delete(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var computerCase = await _context.ComputerCases.SingleOrDefaultAsync(m => m.ID == id);
+            if (computerCase == null)
+            {
+                return NotFound();
+            }
+
+            return View(computerCase);
+        }
+
+        // POST: ComputerCases/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            var computerCase = await _context.ComputerCases.SingleOrDefaultAsync(m => m.ID == id);
+            _context.ComputerCases.Remove(computerCase);
+            await _context.SaveChangesAsync();
+            return RedirectToAction("Index");
+        }
+
+        private bool ComputerCaseExists(int id)
+        {
+            return _context.ComputerCases.Any(e => e.ID == id);
+        }
+    }
+}

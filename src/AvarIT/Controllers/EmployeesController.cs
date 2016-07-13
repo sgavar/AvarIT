@@ -7,25 +7,29 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using AvarIT.Data;
 using AvarIT.Models.InventoryModels;
+using AvarIT.Models.InventoryViewModels;
 
 namespace AvarIT.Controllers
 {
-    public class MonitorsController : Controller
+    public class EmployeesController : Controller
     {
         private readonly ApplicationDbContext _context;
 
-        public MonitorsController(ApplicationDbContext context)
+        public EmployeesController(ApplicationDbContext context)
         {
             _context = context;    
         }
 
-        // GET: Monitors
+        // GET: Employees
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Monitors.ToListAsync());
+           
+                return View(await _context.Employees.ToListAsync());
+         
+           
         }
 
-        // GET: Monitors/Details/5
+        // GET: Employees/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -33,38 +37,38 @@ namespace AvarIT.Controllers
                 return NotFound();
             }
 
-            var monitor = await _context.Monitors.SingleOrDefaultAsync(m => m.ID == id);
-            if (monitor == null)
+            var employee = await _context.Employees.SingleOrDefaultAsync(m => m.EmployeeID == id);
+            if (employee == null)
             {
                 return NotFound();
             }
 
-            return View(monitor);
+            return View(employee);
         }
 
-        // GET: Monitors/Create
+        // GET: Employees/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Monitors/Create
+        // POST: Employees/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,AssignedUser,AvarTagNumber,Brand,Cost,DVI,HDMI,ModelNo,ModelSeries,Note,OfficeLocation,OrderNo,PurchaseDate,Retired,ScreenSize,ScreenType,SerialNumber,VGA,Warranty")] Monitor monitor)
+        public async Task<IActionResult> Create([Bind("EmployeeID,EmployeeName")] Employee employee)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(monitor);
+                _context.Add(employee);
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            return View(monitor);
+            return View(employee);
         }
 
-        // GET: Monitors/Edit/5
+        // GET: Employees/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -72,22 +76,22 @@ namespace AvarIT.Controllers
                 return NotFound();
             }
 
-            var monitor = await _context.Monitors.SingleOrDefaultAsync(m => m.ID == id);
-            if (monitor == null)
+            var employee = await _context.Employees.SingleOrDefaultAsync(m => m.EmployeeID == id);
+            if (employee == null)
             {
                 return NotFound();
             }
-            return View(monitor);
+            return View(employee);
         }
 
-        // POST: Monitors/Edit/5
+        // POST: Employees/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,AssignedUser,AvarTagNumber,Brand,Cost,DVI,HDMI,ModelNo,ModelSeries,Note,OfficeLocation,OrderNo,PurchaseDate,Retired,ScreenSize,ScreenType,SerialNumber,VGA,Warranty")] Monitor monitor)
+        public async Task<IActionResult> Edit(int id, [Bind("EmployeeID,EmployeeName")] Employee employee)
         {
-            if (id != monitor.ID)
+            if (id != employee.EmployeeID)
             {
                 return NotFound();
             }
@@ -96,12 +100,12 @@ namespace AvarIT.Controllers
             {
                 try
                 {
-                    _context.Update(monitor);
+                    _context.Update(employee);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!MonitorExists(monitor.ID))
+                    if (!EmployeeExists(employee.EmployeeID))
                     {
                         return NotFound();
                     }
@@ -112,10 +116,10 @@ namespace AvarIT.Controllers
                 }
                 return RedirectToAction("Index");
             }
-            return View(monitor);
+            return View(employee);
         }
 
-        // GET: Monitors/Delete/5
+        // GET: Employees/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -123,29 +127,29 @@ namespace AvarIT.Controllers
                 return NotFound();
             }
 
-            var monitor = await _context.Monitors.SingleOrDefaultAsync(m => m.ID == id);
-            if (monitor == null)
+            var employee = await _context.Employees.SingleOrDefaultAsync(m => m.EmployeeID == id);
+            if (employee == null)
             {
                 return NotFound();
             }
 
-            return View(monitor);
+            return View(employee);
         }
 
-        // POST: Monitors/Delete/5
+        // POST: Employees/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var monitor = await _context.Monitors.SingleOrDefaultAsync(m => m.ID == id);
-            _context.Monitors.Remove(monitor);
+            var employee = await _context.Employees.SingleOrDefaultAsync(m => m.EmployeeID == id);
+            _context.Employees.Remove(employee);
             await _context.SaveChangesAsync();
             return RedirectToAction("Index");
         }
 
-        private bool MonitorExists(int id)
+        private bool EmployeeExists(int id)
         {
-            return _context.Monitors.Any(e => e.ID == id);
+            return _context.Employees.Any(e => e.EmployeeID == id);
         }
     }
 }

@@ -1,23 +1,17 @@
-@model AvarIT.Models.InventoryViewModels.Miscellaneous
+@model AvarIT.Models.InventoryModels.ComputerCase
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Edit";
 }
 
-<h2>Create</h2>
+<h2>Edit</h2>
 
-<form asp-action="Create">
+<form asp-action="Edit">
     <div class="form-horizontal">
-        <h4>Miscellaneous</h4>
+        <h4>ComputerCase</h4>
         <hr />
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-        <div class="form-group">
-            <label asp-for="AssignedUser" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="AssignedUser" class="form-control" />
-                <span asp-validation-for="AssignedUser" class="text-danger" />
-            </div>
-        </div>
+    <input type="hidden" asp-for="ID" />
         <div class="form-group">
             <label asp-for="AvarTagNumber" class="col-md-2 control-label"></label>
             <div class="col-md-10">
@@ -33,6 +27,20 @@
             </div>
         </div>
         <div class="form-group">
+            <label asp-for="CPUFrequency" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="CPUFrequency" class="form-control" />
+                <span asp-validation-for="CPUFrequency" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="CPUType" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="CPUType" class="form-control" />
+                <span asp-validation-for="CPUType" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
             <label asp-for="Cost" class="col-md-2 control-label"></label>
             <div class="col-md-10">
                 <input asp-for="Cost" class="form-control" />
@@ -40,10 +48,17 @@
             </div>
         </div>
         <div class="form-group">
-            <label asp-for="ItemType" class="col-md-2 control-label"></label>
+            <label asp-for="EmployeeId" class="control-label col-md-2"></label>
             <div class="col-md-10">
-                <input asp-for="ItemType" class="form-control" />
-                <span asp-validation-for="ItemType" class="text-danger" />
+                <select asp-for="EmployeeId" class="form-control" asp-items="ViewBag.EmployeeId"></select>
+                <span asp-validation-for="EmployeeId" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="HDDSize" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="HDDSize" class="form-control" />
+                <span asp-validation-for="HDDSize" class="text-danger" />
             </div>
         </div>
         <div class="form-group">
@@ -54,10 +69,10 @@
             </div>
         </div>
         <div class="form-group">
-            <label asp-for="License" class="col-md-2 control-label"></label>
+            <label asp-for="LaptopScreenSize" class="col-md-2 control-label"></label>
             <div class="col-md-10">
-                <input asp-for="License" class="form-control" />
-                <span asp-validation-for="License" class="text-danger" />
+                <input asp-for="LaptopScreenSize" class="form-control" />
+                <span asp-validation-for="LaptopScreenSize" class="text-danger" />
             </div>
         </div>
         <div class="form-group">
@@ -65,6 +80,13 @@
             <div class="col-md-10">
                 <input asp-for="MachineName" class="form-control" />
                 <span asp-validation-for="MachineName" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="MemorySize" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="MemorySize" class="form-control" />
+                <span asp-validation-for="MemorySize" class="text-danger" />
             </div>
         </div>
         <div class="form-group">
@@ -86,6 +108,13 @@
             <div class="col-md-10">
                 <input asp-for="Note" class="form-control" />
                 <span asp-validation-for="Note" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="OEMLicense" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="OEMLicense" class="form-control" />
+                <span asp-validation-for="OEMLicense" class="text-danger" />
             </div>
         </div>
         <div class="form-group">
@@ -124,6 +153,13 @@
             </div>
         </div>
         <div class="form-group">
+            <label asp-for="UpgradeLicense" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="UpgradeLicense" class="form-control" />
+                <span asp-validation-for="UpgradeLicense" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
             <label asp-for="WLANMAC" class="col-md-2 control-label"></label>
             <div class="col-md-10">
                 <input asp-for="WLANMAC" class="form-control" />
@@ -139,7 +175,7 @@
         </div>
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Save" class="btn btn-default" />
             </div>
         </div>
     </div>

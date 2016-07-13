@@ -1,4 +1,4 @@
-@model AvarIT.Models.InventoryViewModels.NetWork
+@model AvarIT.Models.InventoryModels.ComputerCase
 
 @{
     ViewData["Title"] = "Details";
@@ -7,21 +7,9 @@
 <h2>Details</h2>
 
 <div>
-    <h4>NetWork</h4>
+    <h4>ComputerCase</h4>
     <hr />
     <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.AccessPoint)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.AccessPoint)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.AssignedUser)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.AssignedUser)
-        </dd>
         <dt>
             @Html.DisplayNameFor(model => model.AvarTagNumber)
         </dt>
@@ -35,10 +23,16 @@
             @Html.DisplayFor(model => model.Brand)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.Cabel)
+            @Html.DisplayNameFor(model => model.CPUFrequency)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Cabel)
+            @Html.DisplayFor(model => model.CPUFrequency)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CPUType)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CPUType)
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.Cost)
@@ -47,16 +41,10 @@
             @Html.DisplayFor(model => model.Cost)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.DeviceType)
+            @Html.DisplayNameFor(model => model.HDDSize)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.DeviceType)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Firewall)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Firewall)
+            @Html.DisplayFor(model => model.HDDSize)
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.LANMAC)
@@ -65,22 +53,16 @@
             @Html.DisplayFor(model => model.LANMAC)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.LANPorts)
+            @Html.DisplayNameFor(model => model.LaptopScreenSize)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.LANPorts)
+            @Html.DisplayFor(model => model.LaptopScreenSize)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.LANSpeed)
+            @Html.DisplayNameFor(model => model.MachineName)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.LANSpeed)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Managed)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Managed)
+            @Html.DisplayFor(model => model.MachineName)
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.MemorySize)
@@ -101,22 +83,16 @@
             @Html.DisplayFor(model => model.ModelSeries)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.Modem)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Modem)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.NameOrSSID)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.NameOrSSID)
-        </dd>
-        <dt>
             @Html.DisplayNameFor(model => model.Note)
         </dt>
         <dd>
             @Html.DisplayFor(model => model.Note)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.OEMLicense)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.OEMLicense)
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.OfficeLocation)
@@ -143,22 +119,16 @@
             @Html.DisplayFor(model => model.Retired)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.Router)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Router)
-        </dd>
-        <dt>
             @Html.DisplayNameFor(model => model.SerialNumber)
         </dt>
         <dd>
             @Html.DisplayFor(model => model.SerialNumber)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.Switch)
+            @Html.DisplayNameFor(model => model.UpgradeLicense)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Switch)
+            @Html.DisplayFor(model => model.UpgradeLicense)
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.WLANMAC)
@@ -171,12 +141,6 @@
         </dt>
         <dd>
             @Html.DisplayFor(model => model.Warranty)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.WirelessType)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.WirelessType)
         </dd>
     </dl>
 </div>

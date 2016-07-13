@@ -10,7 +10,10 @@ namespace AvarIT.Models.InventoryModels
 {
     public class Employee
     {
-        public int ID { get; set; }
-        public string Name{ get; set; }
+        
+        public int EmployeeID { get; set; }
+        public string EmployeeName { get; set; }
+
+        public List<ComputerCase> ComputerCases { get; set; }
     }
 }

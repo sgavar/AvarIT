@@ -14,8 +14,14 @@ namespace AvarIT.Models.InventoryModels
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }
 
-        [Display(Name = "Assigned User")]
-        public virtual ICollection<Employee> Employees { get; set; }
+
+      
+        public virtual Employee Employee { get; set; }
+
+   
+        public int EmployeeId { get; set; }
+
+
 
         [Display(Name = "Avar Tag Number")]
         public string AvarTagNumber { get; set; }
