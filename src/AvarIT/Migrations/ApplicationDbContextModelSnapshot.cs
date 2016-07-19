@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using AvarIT.Data;
 
-namespace AvarIT.Data.Migrations
+namespace AvarIT.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     partial class ApplicationDbContextModelSnapshot : ModelSnapshot
@@ -99,17 +99,23 @@ namespace AvarIT.Data.Migrations
 
                     b.Property<string>("OEMLicense");
 
+                    b.Property<string>("OEMOperatingSystem");
+
                     b.Property<string>("OfficeLocation");
+
+                    b.Property<int?>("OperationSystemOSId");
 
                     b.Property<string>("OrderNo");
 
                     b.Property<DateTime?>("PurchaseDate");
 
-                    b.Property<bool?>("Retired");
+                    b.Property<bool>("Retired");
 
                     b.Property<string>("SerialNumber");
 
                     b.Property<string>("UpgradeLicense");
+
+                    b.Property<string>("UpgradedTo");
 
                     b.Property<string>("WLANMAC");
 
@@ -118,6 +124,8 @@ namespace AvarIT.Data.Migrations
                     b.HasKey("ID");
 
                     b.HasIndex("EmployeeId");
+
+                    b.HasIndex("OperationSystemOSId");
 
                     b.ToTable("ComputerCases");
                 });
@@ -294,20 +302,12 @@ namespace AvarIT.Data.Migrations
 
             modelBuilder.Entity("AvarIT.Models.InventoryModels.OperationSystem", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<int>("OSId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int?>("ComputerCaseID");
+                    b.Property<string>("OSName");
 
-                    b.Property<int?>("ComputerCaseID1");
-
-                    b.Property<string>("Name");
-
-                    b.HasKey("ID");
-
-                    b.HasIndex("ComputerCaseID");
-
-                    b.HasIndex("ComputerCaseID1");
+                    b.HasKey("OSId");
 
                     b.ToTable("OperationSystems");
                 });
@@ -509,17 +509,10 @@ namespace AvarIT.Data.Migrations
                         .WithMany()
                         .HasForeignKey("EmployeeId")
                         .OnDelete(DeleteBehavior.Cascade);
-                });
 
-            modelBuilder.Entity("AvarIT.Models.InventoryModels.OperationSystem", b =>
-                {
-                    b.HasOne("AvarIT.Models.InventoryModels.ComputerCase")
+                    b.HasOne("AvarIT.Models.InventoryModels.OperationSystem")
                         .WithMany()
-                        .HasForeignKey("ComputerCaseID");
-
-                    b.HasOne("AvarIT.Models.InventoryModels.ComputerCase")
-                        .WithMany()
-                        .HasForeignKey("ComputerCaseID1");
+                        .HasForeignKey("OperationSystemOSId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRoleClaim<string>", b =>

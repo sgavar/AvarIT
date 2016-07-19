@@ -118,6 +118,15 @@
             </div>
         </div>
         <div class="form-group">
+            <label asp-for="OEMOperatingSystem" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+            
+
+                <select asp-for="OEMOperatingSystem" class="form-control" asp-items="ViewBag.OEMOperatingSystem">
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
             <label asp-for="OfficeLocation" class="col-md-2 control-label"></label>
             <div class="col-md-10">
                 <input asp-for="OfficeLocation" class="form-control" />
@@ -157,6 +166,14 @@
             <div class="col-md-10">
                 <input asp-for="UpgradeLicense" class="form-control" />
                 <span asp-validation-for="UpgradeLicense" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="UpgradedTo" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <select asp-for="UpgradedTo" class="form-control" asp-items="ViewBag.UpgradedTo">
+                 
+                </select>
             </div>
         </div>
         <div class="form-group">

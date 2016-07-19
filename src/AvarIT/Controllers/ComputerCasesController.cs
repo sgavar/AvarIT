@@ -21,19 +21,15 @@ namespace AvarIT.Controllers
         }
 
         // GET: ComputerCases
-            public async Task<IActionResult> Index(int? userId)
+        public async Task<IActionResult> Index(int? userId)
         {
-            IQueryable<int> genreQuery = from m in _context.ComputerCases
-                                         orderby m.EmployeeId
-                                         select m.EmployeeId;
-
             var computerCases = from m in _context.ComputerCases
                                 select m;
 
-           
+
             if (userId != null)
             {
-              
+
                 computerCases = computerCases.Where(x => x.EmployeeId == userId);
                 if (computerCases == null)
                 {
@@ -43,15 +39,14 @@ namespace AvarIT.Controllers
 
             var employeeComputerCaseVM = new EmployeeComputerCaseViewModel();
 
-            employeeComputerCaseVM.users= new SelectList(_context.Employees, "EmployeeID", "EmployeeName");
+            employeeComputerCaseVM.users = new SelectList(_context.Employees, "EmployeeID", "EmployeeName");
 
-            
-            
+
+
             employeeComputerCaseVM.computerCases = await computerCases.ToListAsync();
             return View(employeeComputerCaseVM);
 
         }
-    
 
         // GET: ComputerCases/Details/5
         public async Task<IActionResult> Details(int? id)
@@ -74,6 +69,8 @@ namespace AvarIT.Controllers
         public IActionResult Create()
         {
             ViewData["EmployeeId"] = new SelectList(_context.Employees, "EmployeeID", "EmployeeName");
+            ViewData["OEMOperatingSystem"] = new SelectList(_context.OperationSystems, "OSName", "OSName");
+            ViewData["UpgradedTo"] = new SelectList(_context.OperationSystems, "OSName", "OSName");
             return View();
         }
 
@@ -82,7 +79,7 @@ namespace AvarIT.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,AvarTagNumber,Brand,CPUFrequency,CPUType,Cost,EmployeeId,HDDSize,LANMAC,LaptopScreenSize,MachineName,MemorySize,ModelNo,ModelSeries,Note,OEMLicense,OfficeLocation,OrderNo,PurchaseDate,Retired,SerialNumber,UpgradeLicense,WLANMAC,Warranty")] ComputerCase computerCase)
+        public async Task<IActionResult> Create([Bind("ID,AvarTagNumber,Brand,CPUFrequency,CPUType,Cost,EmployeeId,HDDSize,LANMAC,LaptopScreenSize,MachineName,MemorySize,ModelNo,ModelSeries,Note,OEMLicense,OEMOperatingSystem,OfficeLocation,OrderNo,PurchaseDate,Retired,SerialNumber,UpgradeLicense,UpgradedTo,WLANMAC,Warranty")] ComputerCase computerCase)
         {
             if (ModelState.IsValid)
             {
@@ -90,7 +87,9 @@ namespace AvarIT.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            ViewData["EmployeeId"] = new SelectList(_context.Employees, "EmployeeID", "Employee", computerCase.EmployeeId);
+            ViewData["EmployeeId"] = new SelectList(_context.Employees, "EmployeeID", "EmployeeName", computerCase.EmployeeId);
+            ViewData["OEMOperatingSystem"] = new SelectList(_context.OperationSystems, "OSName", "OSName", computerCase.OEMOperatingSystem);
+            ViewData["UpgradedTo"] = new SelectList(_context.OperationSystems, "OSName", "OSName", computerCase.UpgradedTo);
             return View(computerCase);
         }
 
@@ -107,7 +106,9 @@ namespace AvarIT.Controllers
             {
                 return NotFound();
             }
-            ViewData["EmployeeId"] = new SelectList(_context.Employees, "EmployeeID", "Employee", computerCase.EmployeeId);
+            ViewData["EmployeeId"] = new SelectList(_context.Employees, "EmployeeID", "EmployeeName", computerCase.EmployeeId);
+            ViewData["OEMOperatingSystem"] = new SelectList(_context.OperationSystems, "OSName", "OSName", computerCase.OEMOperatingSystem);
+            ViewData["UpgradedTo"] = new SelectList(_context.OperationSystems, "OSName", "OSName", computerCase.UpgradedTo);
             return View(computerCase);
         }
 
@@ -116,7 +117,7 @@ namespace AvarIT.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,AvarTagNumber,Brand,CPUFrequency,CPUType,Cost,EmployeeId,HDDSize,LANMAC,LaptopScreenSize,MachineName,MemorySize,ModelNo,ModelSeries,Note,OEMLicense,OfficeLocation,OrderNo,PurchaseDate,Retired,SerialNumber,UpgradeLicense,WLANMAC,Warranty")] ComputerCase computerCase)
+        public async Task<IActionResult> Edit(int id, [Bind("ID,AvarTagNumber,Brand,CPUFrequency,CPUType,Cost,EmployeeId,HDDSize,LANMAC,LaptopScreenSize,MachineName,MemorySize,ModelNo,ModelSeries,Note,OEMLicense,OEMOperatingSystem,OfficeLocation,OrderNo,PurchaseDate,Retired,SerialNumber,UpgradeLicense,UpgradedTo,WLANMAC,Warranty")] ComputerCase computerCase)
         {
             if (id != computerCase.ID)
             {
@@ -143,7 +144,9 @@ namespace AvarIT.Controllers
                 }
                 return RedirectToAction("Index");
             }
-            ViewData["EmployeeId"] = new SelectList(_context.Employees, "EmployeeID", "Employee", computerCase.EmployeeId);
+            ViewData["EmployeeId"] = new SelectList(_context.Employees, "EmployeeID", "EmployeeName", computerCase.EmployeeId);
+            ViewData["OEMOperatingSystem"] = new SelectList(_context.OperationSystems, "OSName", "OSName", computerCase.OEMOperatingSystem);
+            ViewData["UpgradedTo"] = new SelectList(_context.OperationSystems, "OSName", "OSName", computerCase.UpgradedTo);
             return View(computerCase);
         }
 

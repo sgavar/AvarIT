@@ -62,13 +62,14 @@ namespace AvarIT.Models.InventoryModels
         public string HDDSize { get; set; }
 
         [Display(Name = "OEM Operating System")]
-        public virtual ICollection<OperationSystem> OEMOperatingSystem { get; set; }
+        public string OEMOperatingSystem { get; set; }
+     
 
         [Display(Name = "OEM License")]
         public string OEMLicense { get; set; }
 
         [Display(Name = "Upgraded To")]
-        public virtual ICollection<OperationSystem> UpgradedTo { get; set; }
+        public string UpgradedTo{ get; set; }
 
         [Display(Name = "Upgrade License")]
         public string UpgradeLicense { get; set; }
@@ -95,7 +96,8 @@ namespace AvarIT.Models.InventoryModels
         [DataType(DataType.MultilineText)]
         public string Note { get; set; }
 
-        public bool? Retired { get; set; }
+      
+        public bool Retired { get; set; }
 
     }
 }

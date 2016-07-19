@@ -9,8 +9,9 @@ using Microsoft.EntityFrameworkCore;
 namespace AvarIT.Models.InventoryModels
 {
     public class OperationSystem
-    {
-        public int ID { get; set; }
-        public string Name { get; set; }
+    {   [Key]
+        public int OSId { get; set; }
+        public string OSName { get; set; }
+        public List<ComputerCase> ComputerCases { get; set; }
     }
 }
