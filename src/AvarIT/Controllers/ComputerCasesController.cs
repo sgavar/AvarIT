@@ -71,6 +71,7 @@ namespace AvarIT.Controllers
             ViewData["EmployeeId"] = new SelectList(_context.Employees, "EmployeeID", "EmployeeName");
             ViewData["OEMOperatingSystem"] = new SelectList(_context.OperationSystems, "OSName", "OSName");
             ViewData["UpgradedTo"] = new SelectList(_context.OperationSystems, "OSName", "OSName");
+            ViewData["BrandId"] = new SelectList(_context.Brands, "BrandId", "BrandName");
             return View();
         }
 
@@ -79,7 +80,7 @@ namespace AvarIT.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,AvarTagNumber,Brand,CPUFrequency,CPUType,Cost,EmployeeId,HDDSize,LANMAC,LaptopScreenSize,MachineName,MemorySize,ModelNo,ModelSeries,Note,OEMLicense,OEMOperatingSystem,OfficeLocation,OrderNo,PurchaseDate,Retired,SerialNumber,UpgradeLicense,UpgradedTo,WLANMAC,Warranty")] ComputerCase computerCase)
+        public async Task<IActionResult> Create([Bind("ID,AvarTagNumber,BrandId,CPUFrequency,CPUType,Cost,EmployeeId,HDDSize,LANMAC,LaptopScreenSize,MachineName,MemorySize,ModelNo,ModelSeries,Note,OEMLicense,OEMOperatingSystem,OfficeLocation,OrderNo,PurchaseDate,Retired,SerialNumber,UpgradeLicense,UpgradedTo,WLANMAC,Warranty")] ComputerCase computerCase)
         {
             if (ModelState.IsValid)
             {
@@ -90,6 +91,7 @@ namespace AvarIT.Controllers
             ViewData["EmployeeId"] = new SelectList(_context.Employees, "EmployeeID", "EmployeeName", computerCase.EmployeeId);
             ViewData["OEMOperatingSystem"] = new SelectList(_context.OperationSystems, "OSName", "OSName", computerCase.OEMOperatingSystem);
             ViewData["UpgradedTo"] = new SelectList(_context.OperationSystems, "OSName", "OSName", computerCase.UpgradedTo);
+            ViewData["BrandId"] = new SelectList(_context.Brands, "BrandId", "BrandName",computerCase.BrandId);
             return View(computerCase);
         }
 
@@ -109,6 +111,7 @@ namespace AvarIT.Controllers
             ViewData["EmployeeId"] = new SelectList(_context.Employees, "EmployeeID", "EmployeeName", computerCase.EmployeeId);
             ViewData["OEMOperatingSystem"] = new SelectList(_context.OperationSystems, "OSName", "OSName", computerCase.OEMOperatingSystem);
             ViewData["UpgradedTo"] = new SelectList(_context.OperationSystems, "OSName", "OSName", computerCase.UpgradedTo);
+            ViewData["BrandId"] = new SelectList(_context.Brands, "BrandId", "BrandName", computerCase.BrandId);
             return View(computerCase);
         }
 
@@ -117,7 +120,7 @@ namespace AvarIT.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,AvarTagNumber,Brand,CPUFrequency,CPUType,Cost,EmployeeId,HDDSize,LANMAC,LaptopScreenSize,MachineName,MemorySize,ModelNo,ModelSeries,Note,OEMLicense,OEMOperatingSystem,OfficeLocation,OrderNo,PurchaseDate,Retired,SerialNumber,UpgradeLicense,UpgradedTo,WLANMAC,Warranty")] ComputerCase computerCase)
+        public async Task<IActionResult> Edit(int id, [Bind("ID,AvarTagNumber,BrandId,CPUFrequency,CPUType,Cost,EmployeeId,HDDSize,LANMAC,LaptopScreenSize,MachineName,MemorySize,ModelNo,ModelSeries,Note,OEMLicense,OEMOperatingSystem,OfficeLocation,OrderNo,PurchaseDate,Retired,SerialNumber,UpgradeLicense,UpgradedTo,WLANMAC,Warranty")] ComputerCase computerCase)
         {
             if (id != computerCase.ID)
             {
@@ -147,6 +150,7 @@ namespace AvarIT.Controllers
             ViewData["EmployeeId"] = new SelectList(_context.Employees, "EmployeeID", "EmployeeName", computerCase.EmployeeId);
             ViewData["OEMOperatingSystem"] = new SelectList(_context.OperationSystems, "OSName", "OSName", computerCase.OEMOperatingSystem);
             ViewData["UpgradedTo"] = new SelectList(_context.OperationSystems, "OSName", "OSName", computerCase.UpgradedTo);
+            ViewData["BrandId"] = new SelectList(_context.Brands, "BrandId", "BrandName", computerCase.BrandId);
             return View(computerCase);
         }
 

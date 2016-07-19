@@ -15,13 +15,13 @@ namespace AvarIT.Models.InventoryModels
         public int ID { get; set; }
 
 
-      
+        public int EmployeeId { get; set; }
         public virtual Employee Employee { get; set; }
 
-   
-        public int EmployeeId { get; set; }
 
 
+        public int BrandId { get; set; }
+        public virtual Brand Brand { get; set; }
 
         [Display(Name = "Avar Tag Number")]
         public string AvarTagNumber { get; set; }
@@ -36,9 +36,6 @@ namespace AvarIT.Models.InventoryModels
 
         [Display(Name = "Serial Number")]
         public string SerialNumber { get; set; }
-
-       
-        public string Brand { get; set; }
 
         [Display(Name = "Model Series")]
         public string ModelSeries { get; set; }

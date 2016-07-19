@@ -31,5 +31,6 @@ namespace AvarIT.Data
         public DbSet<WebCompatibilityIssues> Issues { get; set; }
         public DbSet<Employee> Employees { get; set; }
         public DbSet<OperationSystem> OperationSystems { get; set; }
+        public DbSet<Brand> Brands { get; set; }
     }
 }

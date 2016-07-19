@@ -15,10 +15,9 @@
         <select asp-for="userId" class="form-control" asp-items="Model.users">
             // create a dropdown list
             <option value="">All</option>
-        </select>
-
-        <input type="submit" value="Filter" />
+        </select>      
     </p>
+    <input type="submit" value="Filter" />
 </form>
 
 
@@ -32,7 +31,7 @@
                 @Html.DisplayNameFor(model => model.computerCases[0].AvarTagNumber)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.computerCases[0].Brand)
+                @Html.DisplayNameFor(model => model.computerCases[0].BrandId)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.computerCases[0].CPUFrequency)
@@ -113,7 +112,7 @@
                 @Html.DisplayFor(modelItem => item.AvarTagNumber)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Brand)
+                @Html.DisplayFor(modelItem => item.Brand.BrandName)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.CPUFrequency)

@@ -8,7 +8,7 @@ using AvarIT.Data;
 namespace AvarIT.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20160719201137_one")]
+    [Migration("20160719210332_one")]
     partial class one
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -65,6 +65,18 @@ namespace AvarIT.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
+            modelBuilder.Entity("AvarIT.Models.InventoryModels.Brand", b =>
+                {
+                    b.Property<int>("BrandId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("BrandName");
+
+                    b.HasKey("BrandId");
+
+                    b.ToTable("Brands");
+                });
+
             modelBuilder.Entity("AvarIT.Models.InventoryModels.ComputerCase", b =>
                 {
                     b.Property<int>("ID")
@@ -72,7 +84,7 @@ namespace AvarIT.Migrations
 
                     b.Property<string>("AvarTagNumber");
 
-                    b.Property<string>("Brand");
+                    b.Property<int>("BrandId");
 
                     b.Property<string>("CPUFrequency");
 
@@ -123,6 +135,8 @@ namespace AvarIT.Migrations
                     b.Property<string>("Warranty");
 
                     b.HasKey("ID");
+
+                    b.HasIndex("BrandId");
 
                     b.HasIndex("EmployeeId");
 
@@ -506,6 +520,11 @@ namespace AvarIT.Migrations
 
             modelBuilder.Entity("AvarIT.Models.InventoryModels.ComputerCase", b =>
                 {
+                    b.HasOne("AvarIT.Models.InventoryModels.Brand")
+                        .WithMany()
+                        .HasForeignKey("BrandId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
                     b.HasOne("AvarIT.Models.InventoryModels.Employee")
                         .WithMany()
                         .HasForeignKey("EmployeeId")

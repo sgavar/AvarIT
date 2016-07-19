@@ -35,6 +35,19 @@ namespace AvarIT.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Brands",
+                columns: table => new
+                {
+                    BrandId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    BrandName = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Brands", x => x.BrandId);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Employees",
                 columns: table => new
                 {
@@ -292,7 +305,7 @@ namespace AvarIT.Migrations
                     ID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     AvarTagNumber = table.Column<string>(nullable: true),
-                    Brand = table.Column<string>(nullable: true),
+                    BrandId = table.Column<int>(nullable: false),
                     CPUFrequency = table.Column<string>(nullable: true),
                     CPUType = table.Column<string>(nullable: true),
                     Cost = table.Column<decimal>(nullable: true),
@@ -321,6 +334,12 @@ namespace AvarIT.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_ComputerCases", x => x.ID);
+                    table.ForeignKey(
+                        name: "FK_ComputerCases_Brands_BrandId",
+                        column: x => x.BrandId,
+                        principalTable: "Brands",
+                        principalColumn: "BrandId",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_ComputerCases_Employees_EmployeeId",
                         column: x => x.EmployeeId,
@@ -389,6 +408,11 @@ namespace AvarIT.Migrations
                 name: "UserNameIndex",
                 table: "AspNetUsers",
                 column: "NormalizedUserName");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ComputerCases_BrandId",
+                table: "ComputerCases",
+                column: "BrandId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ComputerCases_EmployeeId",
@@ -465,6 +489,9 @@ namespace AvarIT.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUserTokens");
+
+            migrationBuilder.DropTable(
+                name: "Brands");
 
             migrationBuilder.DropTable(
                 name: "Employees");
