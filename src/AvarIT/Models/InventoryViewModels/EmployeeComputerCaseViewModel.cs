@@ -12,7 +12,7 @@ namespace AvarIT.Models.InventoryViewModels
         public List<ComputerCase> computerCases;
         public SelectList users;
         public SelectList operationSystems;
-
+        public SelectList brands;
         public int userId { get; set; }
     }
 }

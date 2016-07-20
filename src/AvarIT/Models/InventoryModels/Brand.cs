@@ -14,6 +14,6 @@ namespace AvarIT.Models.InventoryModels
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int BrandId { get; set; }
         public string BrandName { get; set; }
-
+        public List<ComputerCase> ComputerCases { get; set; }
     }
 }
