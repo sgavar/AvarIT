@@ -14,6 +14,6 @@ namespace AvarIT.Models.InventoryModels
         public int EmployeeID { get; set; }
         public string EmployeeName { get; set; }
 
-        public List<ComputerCase> ComputerCases { get; set; }
+        public virtual List<ComputerCase> ComputerCases { get; set; }
     }
 }

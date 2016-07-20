@@ -8,8 +8,8 @@ using AvarIT.Data;
 namespace AvarIT.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20160720143632_two")]
-    partial class two
+    [Migration("20160720151432_oen")]
+    partial class oen
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

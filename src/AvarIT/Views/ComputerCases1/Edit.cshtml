@@ -1,16 +1,17 @@
 @model AvarIT.Models.InventoryModels.ComputerCase
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Edit";
 }
 
-<h2>Create</h2>
+<h2>Edit</h2>
 
-<form asp-action="Create">
+<form asp-action="Edit">
     <div class="form-horizontal">
         <h4>ComputerCase</h4>
         <hr />
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <input type="hidden" asp-for="ID" />
         <div class="form-group">
             <label asp-for="AvarTagNumber" class="col-md-2 control-label"></label>
             <div class="col-md-10">
@@ -19,9 +20,10 @@
             </div>
         </div>
         <div class="form-group">
-            <label asp-for="BrandId" class="col-md-2 control-label"></label>
+            <label asp-for="BrandId" class="control-label col-md-2"></label>
             <div class="col-md-10">
                 <select asp-for="BrandId" class="form-control" asp-items="ViewBag.BrandId"></select>
+                <span asp-validation-for="BrandId" class="text-danger" />
             </div>
         </div>
         <div class="form-group">
@@ -46,9 +48,10 @@
             </div>
         </div>
         <div class="form-group">
-            <label asp-for="EmployeeId" class="col-md-2 control-label"></label>
+            <label asp-for="EmployeeId" class="control-label col-md-2"></label>
             <div class="col-md-10">
-                <select asp-for="EmployeeId" class ="form-control" asp-items="ViewBag.EmployeeId"></select>
+                <select asp-for="EmployeeId" class="form-control" asp-items="ViewBag.EmployeeId"></select>
+                <span asp-validation-for="EmployeeId" class="text-danger" />
             </div>
         </div>
         <div class="form-group">
@@ -103,8 +106,7 @@
         <div class="form-group">
             <label asp-for="Note" class="col-md-2 control-label"></label>
             <div class="col-md-10">
-                <textarea asp-for="Note" class="form-control" rows="3">  
-                </textarea>
+                <input asp-for="Note" class="form-control" />
                 <span asp-validation-for="Note" class="text-danger" />
             </div>
         </div>
@@ -118,10 +120,8 @@
         <div class="form-group">
             <label asp-for="OEMOperatingSystem" class="col-md-2 control-label"></label>
             <div class="col-md-10">
-                <select asp-for="OEMOperatingSystem" class="form-control" asp-items="ViewBag.OEMOperatingSystem">
-                    // create a dropdown list
-                    <option value="">All</option>
-                </select>
+                <input asp-for="OEMOperatingSystem" class="form-control" />
+                <span asp-validation-for="OEMOperatingSystem" class="text-danger" />
             </div>
         </div>
         <div class="form-group">
@@ -146,11 +146,11 @@
             </div>
         </div>
         <div class="form-group">
-            <label asp-for="Retired" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                @Html.CheckBoxFor(x => x.Retired, new { Style = "vertical-align:3px}" })
-               
-                <br />
+            <div class="col-md-offset-2 col-md-10">
+                <div class="checkbox">
+                    <input asp-for="Retired" />
+                    <label asp-for="Retired"></label>
+                </div>
             </div>
         </div>
         <div class="form-group">
@@ -170,11 +170,9 @@
         <div class="form-group">
             <label asp-for="UpgradedTo" class="col-md-2 control-label"></label>
             <div class="col-md-10">
-                <select asp-for="UpgradedTo" class="form-control" asp-items="ViewBag.UpgradedTo">
-                    // create a dropdown list
-                    <option value="">All</option>
-                </select>
-</div>
+                <input asp-for="UpgradedTo" class="form-control" />
+                <span asp-validation-for="UpgradedTo" class="text-danger" />
+            </div>
         </div>
         <div class="form-group">
             <label asp-for="WLANMAC" class="col-md-2 control-label"></label>
@@ -192,7 +190,7 @@
         </div>
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Save" class="btn btn-default" />
             </div>
         </div>
     </div>

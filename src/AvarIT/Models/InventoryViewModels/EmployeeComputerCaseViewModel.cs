@@ -14,5 +14,7 @@ namespace AvarIT.Models.InventoryViewModels
         public SelectList operationSystems;
         public SelectList brands;
         public int userId { get; set; }
+        public int branId { get; set; }
+        public int osId { get; set; }
     }
 }

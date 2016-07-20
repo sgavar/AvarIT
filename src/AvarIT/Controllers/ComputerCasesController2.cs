@@ -7,71 +7,24 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using AvarIT.Data;
 using AvarIT.Models.InventoryModels;
-using AvarIT.Models.InventoryViewModels;
 
 namespace AvarIT.Controllers
 {
-    public class ComputerCasesController : Controller
+    public class ComputerCasesController2 : Controller
     {
         private readonly ApplicationDbContext _context;
 
-        public ComputerCasesController(ApplicationDbContext context)
+        public ComputerCasesController2(ApplicationDbContext context)
         {
             _context = context;    
         }
 
         // GET: ComputerCases
-        public async Task<IActionResult> Index(string sortOrder, int? userId)
+        public async Task<IActionResult> Index()
         {
-            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
-            ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
             var applicationDbContext = _context.ComputerCases.Include(c => c.Brand).Include(c => c.Employee);
-            var computerCases = from m in applicationDbContext
-                                select m;
-     
-
-            if (userId != null)
-            {
-
-                computerCases = applicationDbContext.Where(x => x.EmployeeId== userId);
-                if (computerCases == null)
-                {
-                    return NotFound();
-                }
-            }
-
-
-            switch (sortOrder)
-            {
-                case "name_desc":
-                    computerCases = computerCases.OrderByDescending(s => s.Employee.EmployeeName);
-                    break;
-                case "Date":
-                    computerCases = computerCases.OrderBy(s => s.PurchaseDate);
-                    break;
-                case "date_desc":
-                    computerCases = computerCases.OrderByDescending(s => s.PurchaseDate);
-                    break;
-                default:
-                    computerCases = computerCases.OrderBy(s => s.Employee.EmployeeName);
-                    break;
-            }
-          
-
-            var employeeComputerCaseVM = new EmployeeComputerCaseViewModel();
-
-            employeeComputerCaseVM.users = new SelectList(_context.Employees, "EmployeeID", "EmployeeName");
-
-
-
-            employeeComputerCaseVM.computerCases = await computerCases.ToListAsync();
-            return View(employeeComputerCaseVM);
-
-
+            return View(await applicationDbContext.ToListAsync());
         }
-
-
-
 
         // GET: ComputerCases/Details/5
         public async Task<IActionResult> Details(int? id)
@@ -93,10 +46,8 @@ namespace AvarIT.Controllers
         // GET: ComputerCases/Create
         public IActionResult Create()
         {
-            ViewData["EmployeeId"] = new SelectList(_context.Employees, "EmployeeID", "EmployeeName");
-            ViewData["OEMOperatingSystem"] = new SelectList(_context.OperationSystems, "OSName", "OSName");
-            ViewData["UpgradedTo"] = new SelectList(_context.OperationSystems, "OSName", "OSName");
             ViewData["BrandId"] = new SelectList(_context.Brands, "BrandId", "BrandName");
+            ViewData["EmployeeId"] = new SelectList(_context.Employees, "EmployeeID", "EmployeeName");
             return View();
         }
 
@@ -113,10 +64,8 @@ namespace AvarIT.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
+            ViewData["BrandId"] = new SelectList(_context.Brands, "BrandId", "BrandName", computerCase.BrandId);
             ViewData["EmployeeId"] = new SelectList(_context.Employees, "EmployeeID", "EmployeeName", computerCase.EmployeeId);
-            ViewData["OEMOperatingSystem"] = new SelectList(_context.OperationSystems, "OSName", "OSName", computerCase.OEMOperatingSystem);
-            ViewData["UpgradedTo"] = new SelectList(_context.OperationSystems, "OSName", "OSName", computerCase.UpgradedTo);
-            ViewData["BrandId"] = new SelectList(_context.Brands, "BrandId", "BrandName",computerCase.BrandId);
             return View(computerCase);
         }
 
@@ -133,10 +82,8 @@ namespace AvarIT.Controllers
             {
                 return NotFound();
             }
-            ViewData["EmployeeId"] = new SelectList(_context.Employees, "EmployeeID", "EmployeeName", computerCase.EmployeeId);
-            ViewData["OEMOperatingSystem"] = new SelectList(_context.OperationSystems, "OSName", "OSName", computerCase.OEMOperatingSystem);
-            ViewData["UpgradedTo"] = new SelectList(_context.OperationSystems, "OSName", "OSName", computerCase.UpgradedTo);
-            ViewData["BrandId"] = new SelectList(_context.Brands, "BrandId", "BrandName", computerCase.BrandId);
+            ViewData["BrandId"] = new SelectList(_context.Brands, "BrandId", "Brand", computerCase.BrandId);
+            ViewData["EmployeeId"] = new SelectList(_context.Employees, "EmployeeID", "Employee", computerCase.EmployeeId);
             return View(computerCase);
         }
 
@@ -172,10 +119,8 @@ namespace AvarIT.Controllers
                 }
                 return RedirectToAction("Index");
             }
-            ViewData["EmployeeId"] = new SelectList(_context.Employees, "EmployeeID", "EmployeeName", computerCase.EmployeeId);
-            ViewData["OEMOperatingSystem"] = new SelectList(_context.OperationSystems, "OSName", "OSName", computerCase.OEMOperatingSystem);
-            ViewData["UpgradedTo"] = new SelectList(_context.OperationSystems, "OSName", "OSName", computerCase.UpgradedTo);
-            ViewData["BrandId"] = new SelectList(_context.Brands, "BrandId", "BrandName", computerCase.BrandId);
+            ViewData["BrandId"] = new SelectList(_context.Brands, "BrandId", "Brand", computerCase.BrandId);
+            ViewData["EmployeeId"] = new SelectList(_context.Employees, "EmployeeID", "Employee", computerCase.EmployeeId);
             return View(computerCase);
         }
 

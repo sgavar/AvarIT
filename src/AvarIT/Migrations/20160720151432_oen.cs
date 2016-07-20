@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace AvarIT.Migrations
 {
-    public partial class one : Migration
+    public partial class oen : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

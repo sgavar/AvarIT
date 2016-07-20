@@ -12,6 +12,6 @@ namespace AvarIT.Models.InventoryModels
     {   [Key]
         public int OSId { get; set; }
         public string OSName { get; set; }
-        public List<ComputerCase> ComputerCases { get; set; }
+        public virtual List<ComputerCase> ComputerCases { get; set; }
     }
 }
