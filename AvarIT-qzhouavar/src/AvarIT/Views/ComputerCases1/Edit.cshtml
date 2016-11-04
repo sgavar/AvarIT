@@ -20,10 +20,10 @@
             </div>
         </div>
         <div class="form-group">
-            <label asp-for="BrandId" class="control-label col-md-2"></label>
+            <label asp-for="Brand" class="col-md-2 control-label"></label>
             <div class="col-md-10">
-                <select asp-for="BrandId" class="form-control" asp-items="ViewBag.BrandId"></select>
-                <span asp-validation-for="BrandId" class="text-danger" />
+                <input asp-for="Brand" class="form-control" />
+                <span asp-validation-for="Brand" class="text-danger" />
             </div>
         </div>
         <div class="form-group">
@@ -45,13 +45,6 @@
             <div class="col-md-10">
                 <input asp-for="Cost" class="form-control" />
                 <span asp-validation-for="Cost" class="text-danger" />
-            </div>
-        </div>
-        <div class="form-group">
-            <label asp-for="EmployeeId" class="control-label col-md-2"></label>
-            <div class="col-md-10">
-                <select asp-for="EmployeeId" class="form-control" asp-items="ViewBag.EmployeeId"></select>
-                <span asp-validation-for="EmployeeId" class="text-danger" />
             </div>
         </div>
         <div class="form-group">
@@ -172,6 +165,13 @@
             <div class="col-md-10">
                 <input asp-for="UpgradedTo" class="form-control" />
                 <span asp-validation-for="UpgradedTo" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="User" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="User" class="form-control" />
+                <span asp-validation-for="User" class="text-danger" />
             </div>
         </div>
         <div class="form-group">

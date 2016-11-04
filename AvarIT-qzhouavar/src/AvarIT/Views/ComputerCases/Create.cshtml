@@ -1,201 +1,358 @@
-@model AvarIT.Models.InventoryModels.ComputerCase
+@model AvarIT.Models.ITInventoryModels.ComputerCase
 
 @{
     ViewData["Title"] = "Create";
 }
 
-<h2>Create</h2>
-
-<form asp-action="Create">
-    <div class="form-horizontal">
-        <h4>ComputerCase</h4>
-        <hr />
-        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-        
-        <div class="form-group">
-            <label asp-for="BrandId" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <select asp-for="BrandId" class="form-control" asp-items="ViewBag.BrandId"></select>
-            </div>
-        </div>
-        <div class="form-group">
-            <label asp-for="CPUFrequency" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="CPUFrequency" class="form-control" />
-                <span asp-validation-for="CPUFrequency" class="text-danger" />
-            </div>
-        </div>
-        <div class="form-group">
-            <label asp-for="CPUType" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="CPUType" class="form-control" />
-                <span asp-validation-for="CPUType" class="text-danger" />
-            </div>
-        </div>
-        <div class="form-group">
-            <label asp-for="Cost" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="Cost" class="form-control" />
-                <span asp-validation-for="Cost" class="text-danger" />
-            </div>
-        </div>
-        <div class="form-group">
-            <label asp-for="EmployeeId" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <select asp-for="EmployeeId" class ="form-control" asp-items="ViewBag.EmployeeId"></select>
-            </div>
-        </div>
-        <div class="form-group">
-            <label asp-for="HDDSize" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="HDDSize" class="form-control" />
-                <span asp-validation-for="HDDSize" class="text-danger" />
-            </div>
-        </div>
-        <div class="form-group">
-            <label asp-for="LANMAC" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="LANMAC" class="form-control" />
-                <span asp-validation-for="LANMAC" class="text-danger" />
-            </div>
-        </div>
-        <div class="form-group">
-            <label asp-for="LaptopScreenSize" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="LaptopScreenSize" class="form-control" />
-                <span asp-validation-for="LaptopScreenSize" class="text-danger" />
-            </div>
-        </div>
-        <div class="form-group">
-            <label asp-for="MachineName" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="MachineName" class="form-control" />
-                <span asp-validation-for="MachineName" class="text-danger" />
-            </div>
-        </div>
-        <div class="form-group">
-            <label asp-for="MemorySize" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="MemorySize" class="form-control" />
-                <span asp-validation-for="MemorySize" class="text-danger" />
-            </div>
-        </div>
-        <div class="form-group">
-            <label asp-for="ModelNo" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="ModelNo" class="form-control" />
-                <span asp-validation-for="ModelNo" class="text-danger" />
-            </div>
-        </div>
-        <div class="form-group">
-            <label asp-for="ModelSeries" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="ModelSeries" class="form-control" />
-                <span asp-validation-for="ModelSeries" class="text-danger" />
-            </div>
-        </div>
-        <div class="form-group">
-            <label asp-for="Note" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <textarea asp-for="Note" class="form-control" rows="3">  
-                </textarea>
-                <span asp-validation-for="Note" class="text-danger" />
-            </div>
-        </div>
-        <div class="form-group">
-            <label asp-for="OEMLicense" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="OEMLicense" class="form-control" />
-                <span asp-validation-for="OEMLicense" class="text-danger" />
-            </div>
-        </div>
-        <div class="form-group">
-            <label asp-for="OEMOperatingSystem" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <select asp-for="OEMOperatingSystem" class="form-control" asp-items="ViewBag.OEMOperatingSystem">
-                    // create a dropdown list
-                    <option value="">All</option>
-                </select>
-            </div>
-        </div>
-        <div class="form-group">
-            <label asp-for="OfficeLocation" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="OfficeLocation" class="form-control" />
-                <span asp-validation-for="OfficeLocation" class="text-danger" />
-            </div>
-        </div>
-        <div class="form-group">
-            <label asp-for="OrderNo" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="OrderNo" class="form-control" />
-                <span asp-validation-for="OrderNo" class="text-danger" />
-            </div>
-        </div>
-        <div class="form-group">
-            <label asp-for="PurchaseDate" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="PurchaseDate" class="form-control" />
-                <span asp-validation-for="PurchaseDate" class="text-danger" />
-            </div>
-        </div>
-        <div class="form-group">
-            <label asp-for="Retired" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                @Html.CheckBoxFor(x => x.Retired, new { Style = "vertical-align:3px}" })
-               
-                <br />
-            </div>
-        </div>
-        <div class="form-group">
-            <label asp-for="SerialNumber" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="SerialNumber" class="form-control" />
-                <span asp-validation-for="SerialNumber" class="text-danger" />
-            </div>
-        </div>
-        <div class="form-group">
-            <label asp-for="UpgradeLicense" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="UpgradeLicense" class="form-control" />
-                <span asp-validation-for="UpgradeLicense" class="text-danger" />
-            </div>
-        </div>
-        <div class="form-group">
-            <label asp-for="UpgradedTo" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <select asp-for="UpgradedTo" class="form-control" asp-items="ViewBag.UpgradedTo">
-                    // create a dropdown list
-                    <option value="">All</option>
-                </select>
+<div class="col-xs-12">
+    <ol class="breadcrumb" id="page">
+        <li><a asp-controller="Home" asp-action="index">Home</a></li>
+        <li><a href="~/ComputerCases/Index?#page">Computer Case</a></li>
+        <li class="active">Create</li>
+    </ol>
 </div>
-        </div>
-        <div class="form-group">
-            <label asp-for="WLANMAC" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="WLANMAC" class="form-control" />
-                <span asp-validation-for="WLANMAC" class="text-danger" />
+
+<h3>New Computer Case</h3>
+<hr class="style1">
+
+<form asp-action="Create" MaintainScrollPositionOnPostback="true">
+    <div class="row">
+        <!-- begin col-6 -->
+        <div class="col-md-6">
+            <!-- begin panel -->
+            <div class="panel panel-inverse panel-info">
+                <div class="panel-heading">
+                    <h4 class="panel-title">Computer Case</h4>
+                </div>
+                <div class="panel-body">
+                    <div class="form-horizontal">
+
+
+
+                        <div class="form-group" >
+                            <label asp-for="AvarTagNumber" class="col-md-4 control-label"></label>
+                            <div class="col-md-8">
+                                <input asp-for="AvarTagNumber" class="form-control" />
+                                <span asp-validation-for="AvarTagNumber" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="User" class="col-md-4 control-label"></label>
+                            <div class="col-md-8">
+                                <select asp-for="User" class="form-control" asp-items="ViewBag.usersList" id="userDropdownList" onchange="GetSelectedUser(this)" >
+                                    <option value="">--- Please select ---</option>
+                                    <option value="0">Add new</option>
+                                </select>
+                                <span asp-validation-for="User" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="form-group" id="userInputDiv">
+                            <div class="col-md-offset-4 col-md-8">
+                                <input asp-for="User" class="form-control" placeholder="New User" id="userInput" @*onchange="GetTextValue(this*@)"/>
+                                @*<span asp-validation-for="User" class="text-danger"></span>*@
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="MachineName" class="col-md-4 control-label"></label>
+                            <div class="col-md-8">
+                                <input asp-for="MachineName" class="form-control" />
+                                <span asp-validation-for="MachineName" class="text-danger" />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="OfficeLocation" class="col-md-4 control-label"></label>
+                            <div class="col-md-8">
+                                <input asp-for="OfficeLocation" class="form-control" />
+                                <span asp-validation-for="OfficeLocation" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="SerialNumber" class="col-md-4 control-label"></label>
+                            <div class="col-md-8">
+                                <input asp-for="SerialNumber" class="form-control" />
+                                <span asp-validation-for="SerialNumber" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        
+                        <div class="form-group">
+                            <label asp-for="Brand" class="col-md-4 control-label"></label>
+                            <div class="col-md-8">
+                                <select asp-for="Brand" class="form-control" asp-items="ViewBag.brandsList" id="brandDropdownList" onchange="GetSelectedBrand(this)">
+                                    <option value="">--- Please select ---</option>
+                                    <option value="0">Add new</option>
+                                </select>
+                                <span asp-validation-for="Brand" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="form-group" id="brandInputDiv">
+                            <div class="col-md-offset-4 col-md-8">
+                                <input asp-for="Brand" class="form-control" placeholder="New Brand" id="brandInput" />
+                                @*<span asp-validation-for="User" class="text-danger"></span>*@
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label asp-for="ModelSeries" class="col-md-4 control-label"></label>
+                            <div class="col-md-8">
+                                <input asp-for="ModelSeries" class="form-control" />
+                                <span asp-validation-for="ModelSeries" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="ModelNo" class="col-md-4 control-label"></label>
+                            <div class="col-md-8">
+                                <input asp-for="ModelNo" class="form-control" />
+                                <span asp-validation-for="ModelNo" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="LaptopScreenSize" class="col-md-4 control-label"></label>
+                            <div class="col-md-8">
+                                <input asp-for="LaptopScreenSize" class="form-control" />
+                                <span asp-validation-for="LaptopScreenSize" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="CPUType" class="col-md-4 control-label"></label>
+                            <div class="col-md-8">
+                                <input asp-for="CPUType" class="form-control" />
+                                <span asp-validation-for="CPUType" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="CPUFrequency" class="col-md-4 control-label"></label>
+                            <div class="col-md-8">
+                                <input asp-for="CPUFrequency" class="form-control" />
+                                <span asp-validation-for="CPUFrequency" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="MemorySize" class="col-md-4 control-label"></label>
+                            <div class="col-md-8">
+                                <input asp-for="MemorySize" class="form-control" />
+                                <span asp-validation-for="MemorySize" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="form-group">
-            <label asp-for="Warranty" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="Warranty" class="form-control" />
-                <span asp-validation-for="Warranty" class="text-danger" />
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+
+
+        <div class="col-md-6">
+            <!-- begin panel -->
+            <div class="panel panel-inverse panel-info">
+                <div class="panel-heading">
+                    <h4 class="panel-title">Computer Case</h4>
+                </div>
+                <div class="panel-body">
+                    <div class="form-horizontal">
+
+                        <div class="form-group">
+                            <label asp-for="HDDSize" class="col-md-5 control-label"></label>
+                            <div class="col-md-7">
+                                <input asp-for="HDDSize" class="form-control" />
+                                <span asp-validation-for="HDDSize" class="text-danger"></span>
+                            </div>
+                        </div>
+  
+                        <div class="form-group">
+                            <label asp-for="OEMOperatingSystem" class="col-md-5 control-label"></label>
+                            <div class="col-md-7">
+                                <select asp-for="OEMOperatingSystem" class="form-control" asp-items="ViewBag.OEMOSList" id="OEMOperatingSystemDropdownList" onchange="GetSelectedOEMOperatingSystem(this)">
+                                    <option value="">--- Please select ---</option>
+                                    <option value="0">Add new</option>
+                                </select>
+                                <span asp-validation-for="OEMOperatingSystem" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="form-group" id="OEMOperatingSystemInputDiv">
+                            <div class="col-md-offset-5 col-md-7">
+                                <input asp-for="OEMOperatingSystem" class="form-control" placeholder="New OEM Operating System" id="OEMOperatingSystemInput" />
+                                @*<span asp-validation-for="User" class="text-danger"></span>*@
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="OEMLicense" class="col-md-5 control-label"></label>
+                            <div class="col-md-7">
+                                <input asp-for="OEMLicense" class="form-control" />
+                                <span asp-validation-for="OEMLicense" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                       
+                        <div class="form-group">
+                            <label asp-for="UpgradedTo" class="col-md-5 control-label"></label>
+                            <div class="col-md-7">
+                                <select asp-for="UpgradedTo" class="form-control" asp-items="ViewBag.UpOSList" id="UpOperatingSystemDropdownList" onchange="GetSelectedUpOperatingSystem(this)">
+                                    <option value="">--- Please select ---</option>
+                                    <option value="0">Add new</option>
+                                </select>
+                                <span asp-validation-for="UpgradedTo" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="form-group" id="UpOperatingSystemInputDiv">
+                            <div class="col-md-offset-5 col-md-7">
+                                <input asp-for="UpgradedTo" class="form-control" placeholder="New Operating System" id="UpOperatingSystemInput" />
+                                @*<span asp-validation-for="User" class="text-danger"></span>*@
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label asp-for="UpgradeLicense" class="col-md-5 control-label"></label>
+                            <div class="col-md-7">
+                                <input asp-for="UpgradeLicense" class="form-control" />
+                                <span asp-validation-for="UpgradeLicense" class="text-danger"></span>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label asp-for="LANMAC" class="col-md-5 control-label"></label>
+                            <div class="col-md-7">
+                                <input asp-for="LANMAC" class="form-control" />
+                                <span asp-validation-for="LANMAC" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="WLANMAC" class="col-md-5 control-label"></label>
+                            <div class="col-md-7">
+                                <input asp-for="WLANMAC" class="form-control" />
+                                <span asp-validation-for="WLANMAC" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="OrderNo" class="col-md-5 control-label"></label>
+                            <div class="col-md-7">
+                                <input asp-for="OrderNo" class="form-control" />
+                                <span asp-validation-for="OrderNo" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="PurchaseDate" class="col-md-5 control-label"></label>
+                            <div class="col-md-7">
+                                <input asp-for="PurchaseDate" class="form-control" />
+                                <span asp-validation-for="PurchaseDate" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="Warranty" class="col-md-5 control-label"></label>
+                            <div class="col-md-7">
+                                <input asp-for="Warranty" class="form-control" />
+                                <span asp-validation-for="Warranty" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="Cost" class="col-md-5 control-label"></label>
+                            <div class="col-md-7">
+                                <input asp-for="Cost" class="form-control" />
+                                <span asp-validation-for="Cost" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Retired" class="col-md-5 control-label"></label>
+                            <div class="col-md-7">
+                                <input asp-for="Retired" class="checkbox" />
+                                <span asp-validation-for="Retired" class="text-danger"></span>
+                            </div>
+                        </div>  
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-</form>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+    <div class="row">
+        <div class="col-md-6">
+            <!-- begin panel -->
+            <div class="panel panel-inverse panel-info">
+                <div class="panel-heading">
+                    <h4 class="panel-title">Computer Case</h4>
+                </div>
+                <div class="panel-body">
+                    <div class="form-horizontal">
+
+                        <div class="form-group">
+                            <label id="label" asp-for="Note" class="col-md-4 control-label"></label>
+                            <div class="col-md-8">
+                                <textarea asp-for="Note" cols="150" class="form-control" rows="8"></textarea>
+                                <span asp-validation-for="Note" class="text-danger" />
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+
+            <div class="panel panel-inverse panel-info">
+                <div class="panel-heading">
+                    <h4 class="panel-title">Action</h4>
+                </div>
+                <div class="panel-body">
+                    <div class="form-horizontal">
+                        <br />
+                        <div class="form-group">
+
+
+                            <input type="submit" value="Save&Add" class="btn btn-success col-md-offset-2" /> 
+                            <a href="~/ComputerCases/Index?#page" class="col-md-offset-3"><i class="fa fa-backward" aria-hidden="true"></i><strong> Back to List</strong></a>
+
+                        </div>
+
+                        <br />
+                        <br />
+
+                        <br />
+                        <br />
+
+                    </div>
+
+                    <br />
+                    <br />
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</form>                 
+                    
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script type="text/javascript">
+        //users dropdownlist
+        document.getElementById("userInput").disabled = true;
+        document.getElementById("userInputDiv").style.display = "none";
+        document.getElementById("OEMOperatingSystemInput").disabled = true;
+        document.getElementById("OEMOperatingSystemInputDiv").style.display = "none";
+        document.getElementById("UpOperatingSystemInput").disabled = true;
+        document.getElementById("UpOperatingSystemInputDiv").style.display = "none";
+        document.getElementById("brandInput").disabled = true;
+        document.getElementById("brandInputDiv").style.display = "none";
+    </script>
 }
+

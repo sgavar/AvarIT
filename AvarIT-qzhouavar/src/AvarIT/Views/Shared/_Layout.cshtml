@@ -1,22 +1,88 @@
-﻿<!DOCTYPE html>
-<html>
+﻿
+
+<!DOCTYPE html>
+<html >
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="google-signin-scope" content="profile email">
+  
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
     <title>@ViewData["Title"] - AvarIT</title>
-
     <environment names="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
         <link rel="stylesheet" href="~/css/site.css" />
+        <link href="~/css/charisma-app.css" rel="stylesheet" />
+        <link href="~/css/bootstrap.icon-large.min.css" rel="stylesheet" />
+        <link href="~/css/mystyles.css" rel="stylesheet" />
+        <link href="~/css/sb-admin-2.min.css" rel="stylesheet" />
+        <link href="~/css/bootstrap-social.css" rel="stylesheet" />
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css" />
+        <link href="~/lib/Font-Awesome/css/font-awesome.css" rel="stylesheet" />
+        <link href="https://cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js" rel="stylesheet" />
+        <link href="~/css/jquery-ui.css" rel="stylesheet" />
+        <link href="~/css/dataTables.jqueryui.min.css" rel="stylesheet" />
+        <link href="//datatables.net/download/build/nightly/jquery.dataTables.css" rel="stylesheet" type="text/css" />
+        <link href="~/css/creative.min.css" rel="stylesheet" />
+        <link href="~/css/magnific-popup.css" rel="stylesheet" />
+        <link href="~/css/jquery-ui.css" rel="stylesheet" />
     </environment>
     <environment names="Staging,Production">
         <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/css/bootstrap.min.css"
               asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+        <link href="https://cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js" rel="stylesheet" />
+        <link href="~/lib/Font-Awesome/css/font-awesome.min.css" rel="stylesheet" />
+        <link href="~/css/bootstrap-social.css" rel="stylesheet" />
+        <link href="~/css/mystyles.css" rel="stylesheet" />
+        <link href="~/css/jquery-ui.css" rel="stylesheet" />
+        <link href="~/css/dataTables.jqueryui.min.css" rel="stylesheet" />
+        <link href="~/css/bootstrap.icon-large.min.css" rel="stylesheet" />
+        <link href="//datatables.net/download/build/nightly/jquery.dataTables.css" rel="stylesheet" type="text/css" />
+       
+
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="~/css/site.css" />
+        <link href="~/css/charisma-app.css" rel="stylesheet" />
+        <link href="~/css/bootstrap.icon-large.min.css" rel="stylesheet" />
+        <link href="~/css/mystyles.css" rel="stylesheet" />
+        <link href="~/css/sb-admin-2.min.css" rel="stylesheet" />
+        <link href="~/css/bootstrap-social.css" rel="stylesheet" />
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css" />
+        <link href="~/lib/Font-Awesome/css/font-awesome.css" rel="stylesheet" />
+        <link href="https://cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js" rel="stylesheet" />
+        <link href="~/css/jquery-ui.css" rel="stylesheet" />
+        <link href="~/css/dataTables.jqueryui.min.css" rel="stylesheet" />
+        <link href="//datatables.net/download/build/nightly/jquery.dataTables.css" rel="stylesheet" type="text/css" />
+        <link href="~/css/creative.min.css" rel="stylesheet" />
+        <link href="~/css/magnific-popup.css" rel="stylesheet" />
+        <link href="~/css/jquery-ui.css" rel="stylesheet" />
     </environment>
+    @*<script src="https://apis.google.com/js/platform.js" async defer></script>*@
+    @*<script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"></script>*@
 </head>
-<body>
+
+<body >
+
+    <!-- Paste this code after body tag -->
+    <div class="se-pre-con"></div>
+    <!-- Ends -->
+    <header class="headerImage">
+        <img src="~/images/Inventory-Still-Large.jpg" style="visibility:hidden;width:100%; height: auto;">
+        
+        <div class="header-content">
+            <div class="header-content-inner">
+                <h1 id="homeHeading" style="color:#b44661">Avar Inventory</h1>
+                <h1 id="homeHeading" style="color:#b44661">Managment System</h1>
+                <br />
+                <br />
+                <a href="#page" class="btn btn-primary btn-xl page-scroll btn-responsive">Find Out More</a>
+            </div>
+        </div>
+    </header>
+
+
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -26,36 +92,125 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a asp-controller="Home" asp-action="Index" class="navbar-brand">AvarIT</a>
+                <a asp-controller="Home" asp-action="Index" class="navbar-brand">Avar IT</a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a asp-controller="Home" asp-action="Index">Home</a></li>
-                    <li><a asp-controller="Home" asp-action="About">About</a></li>
-                    <li><a asp-controller="Home" asp-action="Contact">Contact</a></li>
-                    <li><a asp-controller="ComputerCases" asp-action="Index">ComputerCase</a></li>
-                    <li><a asp-controller="Employees" asp-action="Index">Employee</a></li>
-                    <li><a asp-controller="OperationSystems" asp-action="Index">OperationSystem</a></li>
-                    <li><a asp-controller="Brands" asp-action="Index">Brand</a></li>
+                    <li>
+                        <a asp-controller="Home" asp-action="Index"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Home</a>
+                    </li>
+
+                    <li class="dropdown">
+                        <a asp-controller="Home" asp-action="IT" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> IT Inventory<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="~/ComputerCases/Index?#page">ComputerCase</a></li>
+                            <li><a asp-controller="Miscellaneous" asp-action="Index">Miscellaneous</a></li>
+                            <li><a asp-controller="Monitors" asp-action="Index">Monitor</a></li>
+                            <li><a asp-controller="Networks" asp-action="Index">Network</a></li>
+                            <li><a asp-controller="Printers" asp-action="Index">Printer</a></li>
+                            <li><a asp-controller="WebCompatibilityIssues" asp-action="Index">Web Compatibility Issues</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Accounting Inventory<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a asp-controller="Computers" asp-action="Index">Computer</a></li>
+                            <li><a asp-controller="OfficeEquipments" asp-action="Index">Office Equipment</a></li>
+                            <li><a asp-controller="OfficeFurnitures" asp-action="Index">Office Furniture</a></li>
+                        </ul>
+                    </li>
+                    <li><a asp-controller="Admin" asp-action="Index"><i class="fa fa-users" aria-hidden="true"></i> Admin</a></li>
+                    <li><a asp-controller="Home" asp-action="Contact"><i class="fa fa-envelope-o"></i> Contact</a></li>
                 </ul>
                 @await Html.PartialAsync("_LoginPartial")
             </div>
         </div>
     </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; 2016 - AvarIT</p>
-        </footer>
+    <h2>Login</h2>
+  
+    <!-- Modal -->
+    <div class="modal fade bs-modal-sm" id="myModal" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                    <h4 class="modal-title">Please use your Avar email account to log in.</h4>
+                </div>
+                <div class="modal-body">
+                    @await Html.PartialAsync("~/Views/Account/Login.cshtml")
+                </div>
+            </div>
+        </div>
     </div>
 
+
+    <div class="container body-content wrapper" id=page>
+
+        @RenderBody()
+        <div class="push"></div>
+    </div>
+    <footer class="row-footer">
+        <div class="row">
+            <div class="col-xs-5 col-xs-offset-1 col-sm-2 col-sm-offset-1">
+                <h5>Links</h5>
+                <ul class="list-unstyled">
+                    <li><a asp-controller="Home" asp-action="Index">Home</a></li>
+                    <li><a asp-controller="Admin" asp-action="Index">Admin</a></li>
+                    <li><a asp-controller="Home" asp-action="Contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="col-xs-6 col-sm-5">
+                <h5>Our Address</h5>
+
+                <address>
+                    Avar Consulting, Inc.<br>
+                    1395 Piccard Drive , Suite 200<br>
+                    Rockville, MD 20850<br>
+
+                    <i class="fa fa-phone"></i> : 301-977-6553<br>
+                    <i class="fa fa-fax"></i>: 301-977-0331<br>
+                    <i class="fa fa-envelope"></i>:
+                    <a href="mailto:it@avarconsulting.com">it@avarconsulting.com</a>
+                </address>
+
+            </div>
+
+            <div class="col-xs-12 col-sm-4">
+                <div class="nav navbar-nav" style="padding: 40px 10px;">
+                    <a class="btn btn-social-icon btn-google-plus" href="http://google.com/+"><i class="fa fa-google-plus"></i></a>
+                    <a class="btn btn-social-icon btn-facebook" href="http://www.facebook.com/profile.php?id="><i class="fa fa-facebook"></i></a>
+                    <a class="btn btn-social-icon btn-linkedin" href="http://www.linkedin.com/in/"><i class="fa fa-linkedin"></i></a>
+                    <a class="btn btn-social-icon btn-twitter" href="http://twitter.com/"><i class="fa fa-twitter"></i></a>
+                    <a class="btn btn-social-icon btn-youtube" href="http://youtube.com/"><i class="fa fa-youtube"></i></a>
+                    <a class="btn btn-social-icon" href="mailto:"><i class="fa fa-envelope-o"></i></a>
+                </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-12">
+                <p style="padding:10px;"></p>
+                <p align=center>&copy; 2016 - AvarIT</p>
+            </div>
+        </div>
+    </footer>
+   
     <environment names="Development">
-        <script src="~/lib/jquery/dist/jquery.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        @*<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>*@
+        <script src="//datatables.net/download/build/nightly/jquery.dataTables.js"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
         <script src="~/js/site.js" asp-append-version="true"></script>
+        <script src="~/lib/Chart.js/dist/Chart.js"></script>
+        <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/responsive/2.1.0/js/dataTables.responsive.min.js"></script>
+        <script src="https://cdn.datatables.net/responsive/2.1.0/js/responsive.bootstrap.min.js"></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js"></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js"></script>
     </environment>
     <environment names="Staging,Production">
+        <link href="//datatables.net/download/build/nightly/jquery.dataTables.css" rel="stylesheet" type="text/css" />
+        <script src="//datatables.net/download/build/nightly/jquery.dataTables.js"></script>
+        <script src="~/lib/Chart.js/dist/Chart.js"></script>
         <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"
                 asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
                 asp-fallback-test="window.jQuery">
@@ -64,9 +219,141 @@
                 asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
                 asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal">
         </script>
-        <script src="~/js/site.min.js" asp-append-version="true"></script>
+        <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/responsive/2.1.0/js/dataTables.responsive.min.js"></script>
+        <script src="https://cdn.datatables.net/responsive/2.1.0/js/responsive.bootstrap.min.js"></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js"></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     </environment>
 
-    @RenderSection("scripts", required: false)
+    @RenderSection("scripts", required: false)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
+
+    <script type="text/javascript">
+
+        // Wait for window load
+        $(window).load(function () {
+            // Animate loader off screen
+            $(".se-pre-con").fadeOut("slow");;
+        });
+        $(document).ready(function () {
+            window.scrollTo = function (x, y) {
+                return true;
+            }
+            document.getElementsByTagName("html")[0].className.replace(/loading/, "")
+            $('#computercase').DataTable({
+                dom: 'Bfrtip',
+                buttons: [
+                {
+                    extend: 'csvHtml5',
+                    title: 'Computer Case',
+                    text: 'Export',
+
+                }
+                ]
+            });
+
+
+            $("#myBtn").click(function () {
+                $("#myModal").modal();
+                $("body").css('padding-right', '0px');
+            });
+
+            var totalComputer;
+            $('#computer').DataTable({
+                "footerCallback": function (row, data, start, end, display) {
+                    var api = this.api(), data;
+
+                    // Remove the formatting to get integer data for summation
+                    var intVal = function (i) {
+                        return typeof i === 'string' ?
+                            i.replace(/[\$,]/g, '') * 1 :
+                            typeof i === 'number' ?
+                            i : 0;
+                    };
+
+                    // Total over all pages
+                    totalComputer = api
+                          .column(2)
+                          .data()
+                          .reduce(function (a, b) {
+                              return intVal(a) + intVal(b);
+                          }, 0);
+
+
+                    // Total over this page
+                    pageTotal = api
+                        .column(2, { page: 'current' })
+                        .data()
+                        .reduce(function (a, b) {
+                            return intVal(a) + intVal(b);
+                        }, 0);
+
+                    // Update footer
+                    $(api.column(2).footer()).html('Total:' + '&nbsp&nbsp&nbsp&nbsp&nbsp' +
+                        '$' + pageTotal + ' ( $' + totalComputer + ' total)'
+                    );
+                }
+            });
+        });
+
+    </script>
+    <script type="text/javascript">
+        //users dropdownlist
+        //document.getElementById("userInput").disabled = true;
+        //document.getElementById("userInputDiv").style.display = "none";
+        function GetSelectedUser(createUser) {
+            var selectedText = createUser.options[createUser.selectedIndex].innerHTML;
+            var selectedValue = createUser.value;
+            if (selectedValue == 0) {
+                //alert("Selected Text: " + selectedText + " Value: " + selectedValue + "index" + createComputerCase.selectedIndex);
+                document.getElementById("userInput").disabled = false;
+                document.getElementById("userInput").value = "";
+                document.getElementById("userDropdownList").disabled = true;
+                document.getElementById("userInputDiv").style.display = "block";
+            }
+        };
+
+        //brands dropdownlist
+        function GetSelectedBrand(createBrand) {
+            var selectedText = createBrand.options[createBrand.selectedIndex].innerHTML;
+            var selectedValue = createBrand.value;
+            if (selectedValue == 0) {
+                //alert("Selected Text: " + selectedText + " Value: " + selectedValue + "index" + createComputerCase.selectedIndex);
+                document.getElementById("brandInput").disabled = false;
+                document.getElementById("brandInput").value = "";
+                document.getElementById("brandDropdownList").disabled = true;
+                document.getElementById("brandInputDiv").style.display = "block";
+            }
+        };
+
+        //OEM Operating System dropdownlist
+        function GetSelectedOEMOperatingSystem(createOEMOperatingSystem) {
+            var selectedText = createOEMOperatingSystem.options[createOEMOperatingSystem.selectedIndex].innerHTML;
+            var selectedValue = createOEMOperatingSystem.value;
+            if (selectedValue == 0) {
+                //alert("Selected Text: " + selectedText + " Value: " + selectedValue + "index" + createComputerCase.selectedIndex);
+                document.getElementById("OEMOperatingSystemInput").disabled = false;
+                document.getElementById("OEMOperatingSystemInput").value = "";
+                document.getElementById("OEMOperatingSystemDropdownList").disabled = true;
+                document.getElementById("OEMOperatingSystemInputDiv").style.display = "block";
+            }
+        };
+
+        //OEM Operating System dropdownlist
+        function GetSelectedUpOperatingSystem(createUpOperatingSystem) {
+            var selectedText = createUpOperatingSystem.options[createUpOperatingSystem.selectedIndex].innerHTML;
+            var selectedValue = createUpOperatingSystem.value;
+            if (selectedValue == 0) {
+                //alert("Selected Text: " + selectedText + " Value: " + selectedValue + "index" + createComputerCase.selectedIndex);
+                document.getElementById("UpOperatingSystemInput").disabled = false;
+                document.getElementById("UpOperatingSystemInput").value = "";
+                document.getElementById("UpOperatingSystemDropdownList").disabled = true;
+                document.getElementById("UpOperatingSystemInputDiv").style.display = "block";
+            }
+        };
+
+    </script>
 </body>
+
 </html>

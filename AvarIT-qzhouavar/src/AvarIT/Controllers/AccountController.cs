@@ -14,7 +14,7 @@ using AvarIT.Services;
 
 namespace AvarIT.Controllers
 {
-    [Authorize]
+ 
     public class AccountController : Controller
     {
         private readonly UserManager<ApplicationUser> _userManager;
@@ -36,7 +36,21 @@ namespace AvarIT.Controllers
             _smsSender = smsSender;
             _logger = loggerFactory.CreateLogger<AccountController>();
         }
-
+        //[AllowAnonymous]
+        //public IActionResult Unauthorized()
+        //{
+        //    return View();
+        //}
+        [AllowAnonymous]
+        public IActionResult AccessDenied()
+        {
+            return View();
+        }
+        [AllowAnonymous]
+        public IActionResult Forbidden()
+        {
+            return View();
+        }
         //
         // GET: /Account/Login
         [HttpGet]
@@ -59,6 +73,7 @@ namespace AvarIT.Controllers
             {
                 // This doesn't count login failures towards account lockout
                 // To enable password failures to trigger account lockout, set lockoutOnFailure: true
+
                 var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, lockoutOnFailure: false);
                 if (result.Succeeded)
                 {
@@ -105,16 +120,41 @@ namespace AvarIT.Controllers
             ViewData["ReturnUrl"] = returnUrl;
             if (ModelState.IsValid)
             {
+
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=532713
                     // Send an email with this link
                     //var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
-                    //var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: HttpContext.Request.Scheme);
+                    // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: HttpContext.Request.Scheme);
                     //await _emailSender.SendEmailAsync(model.Email, "Confirm your account",
                     //    $"Please confirm your account by clicking this link: <a href='{callbackUrl}'>link</a>");
+                    await _userManager.AddToRoleAsync(user, "Inactive");
+                    var userList = new List<String>() {
+                                                        "qzhou@avarconsulting.com",
+                                                        "mqiu@avarconsulting.com"
+                                                    };
+                    var adminList = new List<String>() {
+                                                         "qzhou@avarconsulting.com",
+                                                        "sgou@avarconsulting.com"
+                                                      };
+
+                    if (adminList.Contains(user.Email.ToLower()))
+                    {
+                        await _userManager.RemoveFromRoleAsync(user, "Inactive");
+                        await _userManager.AddToRoleAsync(user, "Admin");
+                    }
+                    else if (userList.Contains(user.Email.ToLower()))
+                    {
+                        await _userManager.RemoveFromRoleAsync(user, "Inactive");
+                        await _userManager.AddToRoleAsync(user, "Employee");
+                    }
+
+
+
                     await _signInManager.SignInAsync(user, isPersistent: false);
                     _logger.LogInformation(3, "User created a new account with password.");
                     return RedirectToLocal(returnUrl);
@@ -209,8 +249,29 @@ namespace AvarIT.Controllers
                 }
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
                 var result = await _userManager.CreateAsync(user);
+
                 if (result.Succeeded)
                 {
+                    await _userManager.AddToRoleAsync(user, "Inactive");
+                    var userList = new List<String>() {
+                                                        "qzhou@avarconsulting.com",
+                                                        "mqiu@avarconsulting.com"
+                                                    };
+                    var adminList = new List<String>() {
+                                                         "qzhou@avarconsulting.com",
+                                                        "sgou@avarconsulting.com"
+                                                      };
+
+                    if (adminList.Contains(user.Email.ToLower()))
+                    {
+                        await _userManager.RemoveFromRoleAsync(user, "Inactive");
+                        await _userManager.AddToRoleAsync(user, "Admin");
+                    }
+                    else if (userList.Contains(user.Email.ToLower()))
+                    {
+                        await _userManager.RemoveFromRoleAsync(user, "Inactive");
+                        await _userManager.AddToRoleAsync(user, "Employee");
+                    }
                     result = await _userManager.AddLoginAsync(user, info);
                     if (result.Succeeded)
                     {
@@ -241,6 +302,33 @@ namespace AvarIT.Controllers
                 return View("Error");
             }
             var result = await _userManager.ConfirmEmailAsync(user, code);
+            if (result.Succeeded)
+            {
+                var userList = new List<String>() {
+                                                        "qzhou@avarconsulting.com",
+                                                        "mqiu@avarconsulting.com"
+                                                    };
+                var adminList = new List<String>() {
+                                                         "qzhou@avarconsulting.com",
+                                                        "sgou@avarconsulting.com"
+                                                      };
+
+                if (adminList.Contains(user.Email.ToLower()))
+                {
+                    await _userManager.RemoveFromRoleAsync(user, "Inactive");
+                    await _userManager.AddToRoleAsync(user, "Admin");
+                }
+                else if (userList.Contains(user.Email.ToLower()))
+                {
+                    await _userManager.RemoveFromRoleAsync(user, "Inactive");
+                    await _userManager.AddToRoleAsync(user, "Employee");
+                }
+
+            }
+
+
+
+
             return View(result.Succeeded ? "ConfirmEmail" : "Error");
         }
 

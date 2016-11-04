@@ -6,8 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using AvarIT.Data;
-using AvarIT.Models.InventoryModels;
-using AvarIT.Models.InventoryViewModels;
+using AvarIT.Models.ITInventoryModels;
+using AvarIT.Models.ErrorData.attributes;
 
 namespace AvarIT.Controllers
 {
@@ -15,63 +15,22 @@ namespace AvarIT.Controllers
     {
         private readonly ApplicationDbContext _context;
 
+
         public ComputerCasesController(ApplicationDbContext context)
         {
-            _context = context;    
+
+            _context = context;
+
+
+
+            //tempEmpList = await genreQuery.Distinct().ToListAsyn();
         }
 
         // GET: ComputerCases
-        public async Task<IActionResult> Index(string sortOrder, int? userId)
+        public async Task<IActionResult> Index()
         {
-            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
-            ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
-            var applicationDbContext = _context.ComputerCases.Include(c => c.Brand).Include(c => c.Employee);
-            var computerCases = from m in applicationDbContext
-                                select m;
-     
-
-            if (userId != null)
-            {
-
-                computerCases = applicationDbContext.Where(x => x.EmployeeId== userId);
-                if (computerCases == null)
-                {
-                    return NotFound();
-                }
-            }
-
-
-            switch (sortOrder)
-            {
-                case "name_desc":
-                    computerCases = computerCases.OrderByDescending(s => s.Employee.EmployeeName);
-                    break;
-                case "Date":
-                    computerCases = computerCases.OrderBy(s => s.PurchaseDate);
-                    break;
-                case "date_desc":
-                    computerCases = computerCases.OrderByDescending(s => s.PurchaseDate);
-                    break;
-                default:
-                    computerCases = computerCases.OrderBy(s => s.Employee.EmployeeName);
-                    break;
-            }
-          
-
-            var employeeComputerCaseVM = new EmployeeComputerCaseViewModel();
-
-            employeeComputerCaseVM.users = new SelectList(_context.Employees, "EmployeeID", "EmployeeName");
-
-
-
-            employeeComputerCaseVM.computerCases = await computerCases.ToListAsync();
-            return View(employeeComputerCaseVM);
-
-
+            return View(await _context.ComputerCases.ToListAsync());
         }
-
-
-
 
         // GET: ComputerCases/Details/5
         public async Task<IActionResult> Details(int? id)
@@ -90,13 +49,41 @@ namespace AvarIT.Controllers
             return View(computerCase);
         }
 
+
+        [ImportModelState]
         // GET: ComputerCases/Create
         public IActionResult Create()
-        {
-            ViewData["EmployeeId"] = new SelectList(_context.Employees, "EmployeeID", "EmployeeName");
-            ViewData["OEMOperatingSystem"] = new SelectList(_context.OperationSystems, "OSName", "OSName");
-            ViewData["UpgradedTo"] = new SelectList(_context.OperationSystems, "OSName", "OSName");
-            ViewData["BrandId"] = new SelectList(_context.Brands, "BrandId", "BrandName");
+        { // Use LINQ to get list of genres.
+
+            var usersList = this._context.ComputerCases.Select(x => x.User).Distinct();
+
+            ViewBag.usersList = usersList.Select(x =>
+                                  new SelectListItem()
+                                  {
+                                      Text = x.ToString()
+                                  });
+
+            var brandsList = this._context.ComputerCases.Select(x => x.Brand).Distinct();
+
+            ViewBag.brandsList = brandsList.Select(x =>
+                                  new SelectListItem()
+                                  {
+                                      Text = x.ToString()
+                                  });
+            var OEMOSList = this._context.ComputerCases.Select(x => x.OEMOperatingSystem).Distinct();
+            ViewBag.OEMOSList = OEMOSList.Select(x =>
+                                  new SelectListItem()
+                                  {
+                                      Text = x.ToString()
+                                  });
+
+            var UpOSList = this._context.ComputerCases.Select(x => x.UpgradedTo).Distinct();
+            ViewBag.UpOSList = UpOSList.Select(x =>
+                                  new SelectListItem()
+                                  {
+                                      Text = x.ToString()
+                                  });
+
             return View();
         }
 
@@ -105,38 +92,62 @@ namespace AvarIT.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,AvarTagNumber,BrandId,CPUFrequency,CPUType,Cost,EmployeeId,HDDSize,LANMAC,LaptopScreenSize,MachineName,MemorySize,ModelNo,ModelSeries,Note,OEMLicense,OEMOperatingSystem,OfficeLocation,OrderNo,PurchaseDate,Retired,SerialNumber,UpgradeLicense,UpgradedTo,WLANMAC,Warranty")] ComputerCase computerCase)
+        [ExportModelState]
+        public async Task<IActionResult> Create([Bind("ID,AvarTagNumber,Brand,CPUFrequency,CPUType,Cost,HDDSize,LANMAC,LaptopScreenSize,MachineName,MemorySize,ModelNo,ModelSeries,Note,OEMLicense,OEMOperatingSystem,OfficeLocation,OrderNo,PurchaseDate,Retired,SerialNumber,UpgradeLicense,UpgradedTo,User,WLANMAC,Warranty")] ComputerCase computerCase)
         {
+
             if (ModelState.IsValid)
             {
                 _context.Add(computerCase);
                 await _context.SaveChangesAsync();
-                return RedirectToAction("Index");
+                return Redirect("~/ComputerCases/Create?#page");
             }
-            ViewData["EmployeeId"] = new SelectList(_context.Employees, "EmployeeID", "EmployeeName", computerCase.EmployeeId);
-            ViewData["OEMOperatingSystem"] = new SelectList(_context.OperationSystems, "OSName", "OSName", computerCase.OEMOperatingSystem);
-            ViewData["UpgradedTo"] = new SelectList(_context.OperationSystems, "OSName", "OSName", computerCase.UpgradedTo);
-            ViewData["BrandId"] = new SelectList(_context.Brands, "BrandId", "BrandName",computerCase.BrandId);
-            return View(computerCase);
+            return Redirect("~/ComputerCases/Create?#page");
         }
 
+        [ImportModelState]
         // GET: ComputerCases/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
+
             if (id == null)
             {
                 return NotFound();
             }
+            var usersList = this._context.ComputerCases.Select(x => x.User).Distinct();
 
+            ViewBag.usersList = usersList.Select(x =>
+                                  new SelectListItem()
+                                  {
+                                      Text = x.ToString()
+                                  });
+
+            var brandsList = this._context.ComputerCases.Select(x => x.Brand).Distinct();
+
+            ViewBag.brandsList = brandsList.Select(x =>
+                                  new SelectListItem()
+                                  {
+                                      Text = x.ToString()
+                                  });
+            var OEMOSList = this._context.ComputerCases.Select(x => x.OEMOperatingSystem).Distinct();
+            ViewBag.OEMOSList = OEMOSList.Select(x =>
+                                  new SelectListItem()
+                                  {
+                                      Text = x.ToString()
+                                  });
+
+            var UpOSList = this._context.ComputerCases.Select(x => x.UpgradedTo).Distinct();
+            ViewBag.UpOSList = UpOSList.Select(x =>
+                                  new SelectListItem()
+                                  {
+                                      Text = x.ToString()
+                                  });
             var computerCase = await _context.ComputerCases.SingleOrDefaultAsync(m => m.ID == id);
             if (computerCase == null)
             {
                 return NotFound();
             }
-            ViewData["EmployeeId"] = new SelectList(_context.Employees, "EmployeeID", "EmployeeName", computerCase.EmployeeId);
-            ViewData["OEMOperatingSystem"] = new SelectList(_context.OperationSystems, "OSName", "OSName", computerCase.OEMOperatingSystem);
-            ViewData["UpgradedTo"] = new SelectList(_context.OperationSystems, "OSName", "OSName", computerCase.UpgradedTo);
-            ViewData["BrandId"] = new SelectList(_context.Brands, "BrandId", "BrandName", computerCase.BrandId);
+
             return View(computerCase);
         }
 
@@ -145,13 +156,20 @@ namespace AvarIT.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,AvarTagNumber,BrandId,CPUFrequency,CPUType,Cost,EmployeeId,HDDSize,LANMAC,LaptopScreenSize,MachineName,MemorySize,ModelNo,ModelSeries,Note,OEMLicense,OEMOperatingSystem,OfficeLocation,OrderNo,PurchaseDate,Retired,SerialNumber,UpgradeLicense,UpgradedTo,WLANMAC,Warranty")] ComputerCase computerCase)
+        [ExportModelState]
+        public async Task<IActionResult> Edit(int id, [Bind("ID,AvarTagNumber,Brand,CPUFrequency,CPUType,Cost,HDDSize,LANMAC,LaptopScreenSize,MachineName,MemorySize,ModelNo,ModelSeries,Note,OEMLicense,OEMOperatingSystem,OfficeLocation,OrderNo,PurchaseDate,Retired,SerialNumber,UpgradeLicense,UpgradedTo,User,WLANMAC,Warranty")] ComputerCase computerCase)
         {
             if (id != computerCase.ID)
             {
                 return NotFound();
             }
+            var usersList = this._context.ComputerCases.Select(x => x.User).Distinct();
 
+            ViewBag.usersList = usersList.Select(x =>
+                                  new SelectListItem()
+                                  {
+                                      Text = x.ToString()
+                                  });
             if (ModelState.IsValid)
             {
                 try
@@ -170,16 +188,13 @@ namespace AvarIT.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction("Index");
+                return Redirect("~/ComputerCases/Index?#page");
             }
-            ViewData["EmployeeId"] = new SelectList(_context.Employees, "EmployeeID", "EmployeeName", computerCase.EmployeeId);
-            ViewData["OEMOperatingSystem"] = new SelectList(_context.OperationSystems, "OSName", "OSName", computerCase.OEMOperatingSystem);
-            ViewData["UpgradedTo"] = new SelectList(_context.OperationSystems, "OSName", "OSName", computerCase.UpgradedTo);
-            ViewData["BrandId"] = new SelectList(_context.Brands, "BrandId", "BrandName", computerCase.BrandId);
-            return View(computerCase);
+            return Redirect("~/ComputerCases/Edit/" + computerCase.ID + "?#page");
         }
 
         // GET: ComputerCases/Delete/5
+        [ImportModelState]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -199,17 +214,19 @@ namespace AvarIT.Controllers
         // POST: ComputerCases/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [ExportModelState]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var computerCase = await _context.ComputerCases.SingleOrDefaultAsync(m => m.ID == id);
             _context.ComputerCases.Remove(computerCase);
             await _context.SaveChangesAsync();
-            return RedirectToAction("Index");
+            return Redirect("~/ComputerCases/Index?#page");
         }
 
         private bool ComputerCaseExists(int id)
         {
             return _context.ComputerCases.Any(e => e.ID == id);
         }
+
     }
 }

@@ -1,17 +1,66 @@
 ﻿@{
-    ViewData["Title"] = "Contact";
+    ViewData["Title"] = "Contact Us";
 }
-<h2>@ViewData["Title"].</h2>
-<h3>@ViewData["Message"]</h3>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <ul class="breadcrumb">
+                <li><a asp-controller="Home" asp-action="Index">Home</a></li>
+                <li class="active">Contact Us</li>
+            </ul>
+        </div>
+        <div class="col-xs-12">
+            <h3>Contact Us</h3>
+            <hr>
+        </div>
+    </div>
+
+    <div class="row row-content">
+        <div class="col-xs-12">
+            <h3>Location Information</h3>
+        </div>
+        <div class="col-xs-12 col-sm-4 col-sm-offset-1">
+            <h5>Our Address</h5>
+            <address style="font-size: 100%">
+             
+                    Avar Consulting, Inc.<br>
+                    1395 Piccard Drive , Suite 200<br>
+                    Rockville, MD 20850<br>
+
+                    <i class="fa fa-phone"></i> : 301-977-6553<br>
+                    <i class="fa fa-fax"></i>: 301-977-0331<br>
+                    <i class="fa fa-envelope"></i>:
+                    <a href="mailto:it@avarconsulting.com">it@avarconsulting.com</a>
+                
+            </address>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-sm-offset-1">
+            <h5>Map of our Location</h5>
+        </div>
+        <div class="col-xs-12 col-sm-11 col-sm-offset-1">
+            <div class="btn-group" role="group" aria-label="...">
+                <a type="button" class="btn btn-primary" href="tel:+85212345678"><i class="fa fa-phone"></i> Call</a>
+                <a type="button" class="btn btn-info"><i class="fa fa-skype"></i> Skype</a>
+                <a type="button" class="btn btn-success" href="mailto:confusion@food.net"><i class="fa fa-envelope-o"></i> Email</a>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+
+
 
 <address>
-    One Microsoft Way<br />
-    Redmond, WA 98052-6399<br />
+    1395<br />
+    Piccard Dr, Suite 200 Rockville MD 20850<br />
     <abbr title="Phone">P:</abbr>
-    425.555.0100
+    (000)000-0000
 </address>
 
 <address>
-    <strong>Support:</strong> <a href="mailto:Support@example.com">Support@example.com</a><br />
-    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
+    <strong>Support:</strong> <a href="mailto:it@avarconsulting.com">it@avarconsulting.com</a>
 </address>

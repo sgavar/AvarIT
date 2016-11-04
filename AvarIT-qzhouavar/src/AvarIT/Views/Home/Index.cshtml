@@ -1,59 +1,20 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
-
+<br /><br />
 <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="6000">
     <ol class="carousel-indicators">
         <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
         <li data-target="#myCarousel" data-slide-to="1"></li>
-        <li data-target="#myCarousel" data-slide-to="2"></li>
-        <li data-target="#myCarousel" data-slide-to="3"></li>
     </ol>
     <div class="carousel-inner" role="listbox">
         <div class="item active">
-            <img src="~/images/banner1.svg" alt="ASP.NET" class="img-responsive" />
-            <div class="carousel-caption" role="option">
-                <p>
-                    Learn how to build ASP.NET apps that can run anywhere.
-                    <a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkID=525028&clcid=0x409">
-                        Learn More
-                    </a>
-                </p>
-            </div>
+            <canvas id="canvas" width="80" height="25"> </canvas>
         </div>
         <div class="item">
-            <img src="~/images/banner2.svg" alt="Visual Studio" class="img-responsive" />
-            <div class="carousel-caption" role="option">
-                <p>
-                    There are powerful new features in Visual Studio for building modern web apps.
-                    <a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkID=525030&clcid=0x409">
-                        Learn More
-                    </a>
-                </p>
-            </div>
+            <canvas id="canvasAccounting" width="80" height="25"> </canvas>
         </div>
-        <div class="item">
-            <img src="~/images/banner3.svg" alt="Package Management" class="img-responsive" />
-            <div class="carousel-caption" role="option">
-                <p>
-                    Bring in libraries from NuGet, Bower, and npm, and automate tasks using Grunt or Gulp.
-                    <a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkID=525029&clcid=0x409">
-                        Learn More
-                    </a>
-                </p>
-            </div>
-        </div>
-        <div class="item">
-            <img src="~/images/banner4.svg" alt="Microsoft Azure" class="img-responsive" />
-            <div class="carousel-caption" role="option">
-                <p>
-                    Learn how Microsoft's Azure cloud platform allows you to build, deploy, and scale web apps.
-                    <a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkID=525027&clcid=0x409">
-                        Learn More
-                    </a>
-                </p>
-            </div>
-        </div>
+
     </div>
     <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
         <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
@@ -64,46 +25,281 @@
         <span class="sr-only">Next</span>
     </a>
 </div>
+<br />
+<div class="panel panel-success">
+    <div class="panel-heading"><a data-toggle="collapse" href="#collapse1" style="font-size:20pt">IT Inventory</a></div>
+    <div id="collapse1" class="panel-collapse collapse in">
 
-<div class="row">
-    <div class="col-md-3">
-        <h2>Application uses</h2>
-        <ul>
-            <li>Sample pages using ASP.NET Core MVC</li>
-            <li><a href="http://go.microsoft.com/fwlink/?LinkId=518007">Gulp</a> and <a href="http://go.microsoft.com/fwlink/?LinkId=518004">Bower</a> for managing client-side libraries</li>
-            <li>Theming using <a href="http://go.microsoft.com/fwlink/?LinkID=398939">Bootstrap</a></li>
-        </ul>
-    </div>
-    <div class="col-md-3">
-        <h2>How to</h2>
-        <ul>
-            <li><a href="http://go.microsoft.com/fwlink/?LinkID=398600">Add a Controller and View</a></li>
-            <li><a href="http://go.microsoft.com/fwlink/?LinkID=699562">Add an appsetting in config and access it in app.</a></li>
-            <li><a href="http://go.microsoft.com/fwlink/?LinkId=699315">Manage User Secrets using Secret Manager.</a></li>
-            <li><a href="http://go.microsoft.com/fwlink/?LinkId=699316">Use logging to log a message.</a></li>
-            <li><a href="http://go.microsoft.com/fwlink/?LinkId=699317">Add packages using NuGet.</a></li>
-            <li><a href="http://go.microsoft.com/fwlink/?LinkId=699318">Add client packages using Bower.</a></li>
-            <li><a href="http://go.microsoft.com/fwlink/?LinkId=699319">Target development, staging or production environment.</a></li>
-        </ul>
-    </div>
-    <div class="col-md-3">
-        <h2>Overview</h2>
-        <ul>
-            <li><a href="http://go.microsoft.com/fwlink/?LinkId=518008">Conceptual overview of what is ASP.NET Core</a></li>
-            <li><a href="http://go.microsoft.com/fwlink/?LinkId=699320">Fundamentals of ASP.NET Core such as Startup and middleware.</a></li>
-            <li><a href="http://go.microsoft.com/fwlink/?LinkId=398602">Working with Data</a></li>
-            <li><a href="http://go.microsoft.com/fwlink/?LinkId=398603">Security</a></li>
-            <li><a href="http://go.microsoft.com/fwlink/?LinkID=699321">Client side development</a></li>
-            <li><a href="http://go.microsoft.com/fwlink/?LinkID=699322">Develop on different platforms</a></li>
-            <li><a href="http://go.microsoft.com/fwlink/?LinkID=699323">Read more on the documentation site</a></li>
-        </ul>
-    </div>
-    <div class="col-md-3">
-        <h2>Run & Deploy</h2>
-        <ul>
-            <li><a href="http://go.microsoft.com/fwlink/?LinkID=517851">Run your app</a></li>
-            <li><a href="http://go.microsoft.com/fwlink/?LinkID=517853">Run tools such as EF migrations and more</a></li>
-            <li><a href="http://go.microsoft.com/fwlink/?LinkID=398609">Publish to Microsoft Azure Web Apps</a></li>
-        </ul>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-lg-3 col-md-6  ">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <img src="~/images/computer.png" width="80" />
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div class="huge">@ViewData["ComputerCaseCount"]</div>
+                                    <div><a href="~/ComputerCases/Create?#page" style="color:white">New Computer Case!</a></div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <a href="~/ComputerCases/Index?#page">
+                            <div class="panel-footer">
+                                <span class="pull-left">View Details</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="panel panel-green">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <img src="~/images/monitor.jpg" width="70" />
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div class="huge">@ViewData["MonitorCount"]</div>
+                                    <div><a asp-controller="Monitors" asp-action="Create" style="color:white">New Monitor!</a></div>
+                                </div>
+                            </div>
+                        </div>
+                        <a asp-controller="Monitors" asp-action="Index">
+                            <div class="panel-footer">
+                                <span class="pull-left">View Details</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 pull-right col-xs-12" >
+                    <div class="panel panel-yellow">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+
+                                    <img src="~/images/router.png" width="70" />
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div class="huge">@ViewData["NetworkCount"]</div>
+                                    <div><a asp-controller="Networks" asp-action="Create" style="color:white">New Network!</a></div>
+                                </div>
+                            </div>
+                        </div>
+                        <a asp-controller="Networks" asp-action="Index">
+                            <div class="panel-footer">
+                                <span class="pull-left">View Details</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6 pull-right col-xs-12">
+                    <div class="panel panel-red">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <img src="~/images/printer.png" width="70" />
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div class="huge">@ViewData["PrinterCount"]</div>
+                                    <div><a asp-controller="Printers" asp-action="Create" style="color:white">New Printer!</a></div>
+                                </div>
+                            </div>
+                        </div>
+                        <a asp-controller="Printers" asp-action="Index">
+                            <div class="panel-footer">
+                                <span class="pull-left">View Details</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- /.row -->
+            <div class="row wrap">
+                <div class="col-lg-3 col-md-6">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <img src="~/images/miscellaneous.png" width="80" />
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div class="huge">@ViewData["MiscellaneousCount"]</div>
+                                    <div><a asp-controller="Miscellaneous" asp-action="Create" style="color:white">New Miscellaneous!</a></div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <a asp-controller="Miscellaneous" asp-action="Index">
+                            <div class="panel-footer">
+                                <span class="pull-left">View Details</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="panel panel-green">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <img src="~/images/four-browser-icons.png" width="120" />
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div class="huge">@ViewData["IssuesCount"]</div>
+                                    <div><a asp-controller="WebCompatibilityIssues" asp-action="Create" style="color:white">New Compatibility Issue!</a></div>
+                                </div>
+                            </div>
+                        </div>
+                        <a asp-controller="WebCompatibilityIssues" asp-action="Index">
+                            <div class="panel-footer">
+                                <span class="pull-left">View Details</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
     </div>
 </div>
+
+<div class="panel panel-info">
+    <div class="panel-heading"><a data-toggle="collapse" href="#collapse2" style="font-size:20pt">Accounting Inventory</a></div>
+    <div id="collapse2" class="panel-collapse collapse in">
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-3 col-sm-3 col-xs-6">
+                        <div class="well top-block ">
+                            <a asp-controller="Employees" asp-action="Index">
+                                <i class="fa fa-laptop blue"></i>
+                                <div>Computers</div>
+                            </a>
+                            <a asp-controller="Computers" asp-action="Create"><div><i class="glyphicon glyphicon-plus-sign blue"></i></div></a>
+                            <span class="notification">@ViewData["ComputerCount"]</span>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3 col-sm-3 col-xs-6">
+                        <div class="well top-block ">
+                            <a asp-controller="OfficeEquipments" asp-action="Index">
+                                <i class="glyphicon glyphicon-phone-alt green"></i>
+                                <div>Office Equipments</div>
+                            </a>
+                            <a asp-controller="OfficeEquipments" asp-action="Create"><div><i class="glyphicon glyphicon-plus-sign green"></i></div></a>
+                            <span class="notification">@ViewData["OfficeEquipmentCount"]</span>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-3 col-xs-6">
+                        <div class="well top-block ">
+                            <a asp-controller="OfficeFurnitures" asp-action="Index">
+                                <i class="fa fa-television  yellow"></i>
+                                <div>Office Furnitures</div>
+                            </a>
+                            <a asp-controller="OfficeFurnitures" asp-action="Create"><div><i class="glyphicon glyphicon-plus-sign yellow"></i></div></a>
+                            <span class="notification">40253.12</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+
+<script src="~/lib/Chart.js/dist/Chart.js"></script>
+@section Scripts {
+<script type="text/javascript">
+            var barChartData = {
+                labels: ["Computer Case", "Monitor", "Network", "Printer", "Miscellaneous", "Web Compatibility Issues"],
+                datasets: [{
+                    label: '',
+                    backgroundColor: [
+                      'rgba(255, 99, 132, 0.2)',
+                      'rgba(54, 162, 235, 0.2)',
+                      'rgba(255, 206, 86, 0.2)',
+                      'rgba(75, 192, 192, 0.2)',
+                      'rgba(153, 102, 255, 0.2)',
+                      'rgba(255, 159, 64, 0.2)',
+                      'rgba(255, 99, 132, 0.2)',
+                      'rgba(54, 162, 235, 0.2)',
+                      'rgba(255, 206, 86, 0.2)',
+                      'rgba(75, 192, 192, 0.2)',
+                      'rgba(153, 102, 255, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255,99,132,1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)',
+                         'rgba(255,99,132,1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)'
+                    ],
+                    borderWidth: 2,
+                    data: [@ViewData["ComputerCaseCount"],  @ViewData["MonitorCount"],  @ViewData["NetworkCount"], @ViewData["PrinterCount"],   @ViewData["MiscellaneousCount"],  @ViewData["IssuesCount"]]
+                }
+                ]
+            };
+
+
+            var ctx = document.getElementById("canvas").getContext("2d");
+            var bg = new Image();
+            bg.onload = function () {
+                ctx.drawImage(bg, 0, 0);
+
+            }
+            bg.src == "~/images/stop.jpg";
+
+            Chart.defaults.bar.scales.xAxes[0].categorySpacing = 0;
+            window.myBar = new Chart(ctx, {
+                type: 'bar',
+                data: barChartData,
+
+                options: {
+
+                    scales: {
+                        xAxes: [{
+                            barPercentage: 0.8,
+                            ticks: {
+                                fontSize: 13
+                            },
+                            gridLines: {
+                                drawOnChartArea: false
+                            },
+                        }],
+
+
+                    },
+
+                    title: {
+                        display: true,
+                        text: 'IT Inventory Statistics',
+                        fontSize: 26
+                    },
+                    legend: {
+                        display: false,
+                    },
+                }
+                    });
+
+</script>
+                  
+}

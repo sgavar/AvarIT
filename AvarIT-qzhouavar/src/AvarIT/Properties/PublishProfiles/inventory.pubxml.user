@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit http://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <_PublishTargetUrl>C:\inetpub\wwwroot\New folder (2)</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <DestinationConnectionStrings Include="DefaultConnection">
+      <Value>Server=(localdb)\mssqllocaldb;Database=aspnet-AvarIT-0678bda2-3287-414e-96fb-fe257a8fa13c;Trusted_Connection=True;MultipleActiveResultSets=true</Value>
+    </DestinationConnectionStrings>
+  </ItemGroup>
+  <ItemGroup>
+    <File Include="Data/ApplicationDbContext.cs">
+      <publishTime>11/03/2016 12:45:39</publishTime>
+    </File>
+    <File Include="Data/Migrations/00000000000000_CreateIdentitySchema.cs">
+      <publishTime>11/03/2016 12:12:37</publishTime>
+    </File>
+    <File Include="Data/Migrations/00000000000000_CreateIdentitySchema.Designer.cs">
+      <publishTime>11/03/2016 12:12:37</publishTime>
+    </File>
+    <File Include="Data/Migrations/20161103162038_one.cs">
+      <publishTime>11/03/2016 12:20:38</publishTime>
+    </File>
+    <File Include="Data/Migrations/20161103162038_one.Designer.cs">
+      <publishTime>11/03/2016 12:20:38</publishTime>
+    </File>
+    <File Include="Data/Migrations/ApplicationDbContextModelSnapshot.cs">
+      <publishTime>11/03/2016 12:20:38</publishTime>
+    </File>
+  </ItemGroup>
+</Project>
