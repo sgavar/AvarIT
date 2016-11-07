@@ -20,21 +20,15 @@ namespace AvarIT.Controllers
 
         public IActionResult Index()
         {
-            var c= _context.ComputerCases.ToList();
-            ViewData["ComputerCaseCount"]= c.Count;
-            var m = _context.Monitors.ToList();
-            ViewData["MonitorCount"] = m.Count;
-            var p = _context.Printers.ToList();
-            ViewData["PrinterCount"] = p.Count;
-            var n = _context.NetWorks.ToList();
-            ViewData["NetworkCount"] = n.Count;
-            var mis = _context.MiscellaneousItems.ToList();
-            ViewData["MiscellaneousCount"] = mis.Count;
-            var i= _context.Issues.ToList();
-            ViewData["IssuesCount"] = i.Count;
-         
-            var cp = _context.Computers.Select(v => v.Cost).ToArray();
-            ViewData["ComputerSum"] = cp.Sum();
+            
+            ViewData["ComputerCaseCount"] = _context.ComputerCases.Count();
+            ViewData["MonitorCount"] = _context.Monitors.Count();
+            ViewData["PrinterCount"] = _context.Printers.Count();
+            ViewData["NetworkCount"] = _context.NetWorks.Count();
+            ViewData["MiscellaneousCount"] = _context.MiscellaneousItems.Count();
+            ViewData["IssuesCount"] = _context.Issues.Count();
+            ViewData["ComputerSum"] = _context.Computers.Select(v => v.Cost).Sum();
+
             return View();
         }
 
